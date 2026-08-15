@@ -1,0 +1,465 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DONSVOL Admin Dashboard</title>
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link rel="icon"
+          type="image/x-icon"
+          href="{% static 'images/helping-hand.png' %}">
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/bootstrap.css' %}">
+
+
+    <!-- =====================================================
+         DATATABLE
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+
+    <!-- =====================================================
+         ADMIN CSS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/style-admin.css' %}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<div class="sidebar" id="adminSidebar">
+
+
+    <!-- =====================================================
+         LOGO + TOGGLE
+    ====================================================== -->
+
+    <div class="logo_content">
+
+        <div class="logo">
+
+            <i class="fa fa-hands-helping"></i>
+
+            <div class="logo_name">
+               Being Human
+            </div>
+
+        </div>
+
+
+        <!-- SIDEBAR TOGGLE -->
+
+        <button type="button"
+                id="btn-sidebar"
+                class="sidebar-toggle"
+                title="Toggle Sidebar"
+                aria-label="Toggle Sidebar">
+
+            <i class="fa fa-bars"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
+    <div class="profile_content">
+
+        <div class="profile">
+
+            <div class="profile_details">
+
+                <img src="{% static 'images/logo1.png' %}"
+                     alt="Admin Profile">
+
+                <div class="name_job">
+
+                    <div class="name">
+                        {{ request.user.first_name }}
+                        {{ request.user.last_name }}
+                    </div>
+
+                    <div class="email">
+                        {{ request.user.email }}
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <ul class="nav_list">
+
+
+        <!-- DASHBOARD -->
+
+        <li>
+
+            <a href="{% url 'index_admin' %}">
+
+                <i class="fa fa-th-large"></i>
+
+                <span class="links_name">
+                    Dashboard
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- =================================================
+             DONATION
+        ================================================== -->
+
+        <li class="sidebar-dropdown">
+
+            <a href="#"
+               class="dropdown-toggle"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+
+                <i class="fa fa-hand-holding-heart"></i>
+
+                <span class="links_name">
+                    Donation
+                </span>
+
+                <i class="down-arrow fa-solid fa-angle-down"></i>
+
+            </a>
+
+
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'pending_donation' %}">
+                        <i class="fa fa-clock me-2"></i>
+                        New Donation Request
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'accepted_donation' %}">
+                        <i class="fa fa-check-circle me-2"></i>
+                        Accepted Donation
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'rejected_donation' %}">
+                        <i class="fa fa-times-circle me-2"></i>
+                        Rejected Donation
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'volunteerallocated_donation' %}">
+                        <i class="fa fa-user-check me-2"></i>
+                        Volunteer Allocated Donation
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'donationrec_admin' %}">
+                        <i class="fa fa-inbox me-2"></i>
+                        Donation Received
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'donationnotrec_admin' %}">
+                        <i class="fa fa-ban me-2"></i>
+                        Donation Not Received
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'donationdelivered_admin' %}">
+                        <i class="fa fa-truck me-2"></i>
+                        Donation Delivered
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'all_donations' %}">
+                        <i class="fa fa-list me-2"></i>
+                        All Donations
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+     <!-- CONTACT MESSAGES -->
+
+        <li>
+
+            <a href="{% url 'contact_messages' %}">
+
+                <i class="fa-solid fa-envelope"></i>
+
+                <span class="links_name">
+                    Contact Messages
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- MANAGE DONOR -->
+
+        <li>
+
+            <a href="{% url 'manage_donor' %}">
+
+                <i class="fa fa-users"></i>
+
+                <span class="links_name">
+                    Manage Donor
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- =================================================
+             VOLUNTEER
+        ================================================== -->
+
+        <li class="sidebar-dropdown">
+
+            <a href="#"
+               class="dropdown-toggle"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+
+                <i class="fa fa-user-circle"></i>
+
+                <span class="links_name">
+                    Volunteer
+                </span>
+
+                <i class="down-arrow fa-solid fa-angle-down"></i>
+
+            </a>
+
+
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'new_volunteer' %}">
+                        <i class="fa fa-user-plus me-2"></i>
+                        New Volunteer Request
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'accepted_volunteer' %}">
+                        <i class="fa fa-user-check me-2"></i>
+                        Accepted Volunteer
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'rejected_volunteer' %}">
+                        <i class="fa fa-user-times me-2"></i>
+                        Rejected Volunteer
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'all_volunteer' %}">
+                        <i class="fa fa-users me-2"></i>
+                        All Volunteer
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+
+
+        <!-- =================================================
+             DONATION AREA
+        ================================================== -->
+
+        <li class="sidebar-dropdown">
+
+            <a href="#"
+               class="dropdown-toggle"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+
+                <i class="fa fa-map-marker-alt"></i>
+
+                <span class="links_name">
+                    Area
+                </span>
+
+                <i class="down-arrow fa-solid fa-angle-down"></i>
+
+            </a>
+
+
+            <ul class="dropdown-menu">
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'add_area' %}">
+                        <i class="fa fa-plus-circle me-2"></i>
+                        Add Donation Area
+                    </a>
+                </li>
+
+                <li>
+                    <a class="dropdown-item"
+                       href="{% url 'manage_area' %}">
+                        <i class="fa fa-map me-2"></i>
+                        Manage Donation Area
+                    </a>
+                </li>
+
+            </ul>
+
+        </li>
+
+
+        <!-- CHANGE PASSWORD -->
+
+        <li>
+
+            <a href="{% url 'changepwd_admin' %}">
+
+                <i class="fa fa-key"></i>
+
+                <span class="links_name">
+                    Change Password
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- LOGOUT -->
+
+        <li>
+
+            <a href="{% url 'logout' %}">
+
+                <i class="fa fa-sign-out-alt"></i>
+
+                <span class="links_name">
+                    Logout
+                </span>
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<div class="home_content" id="adminContent">
+
+    {% block main %}
+    {% endblock main %}
+
+    {% include 'app/base-db-footer.html' %}
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'js/myscript.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h1 class="admin-page-title">
+                View Volunteer Detail
+            </h1>
+
+            <p class="admin-page-subtitle">
+                Review volunteer information and update their application status.
+            </p>
+
+        </div>
+
+        <div class="admin-page-icon volunteer-detail-page-icon">
+            <i class="fas fa-user-circle"></i>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MESSAGES
+    ====================================================== -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="admin-message">
+
+                <i class="fas fa-check-circle"></i>
+
+                <span>
+                    {{ message }}
+                </span>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         VOLUNTEER INFORMATION
+    ====================================================== -->
+
+    <div class="admin-detail-card">
+
+        <div class="admin-detail-card-header">
+
+            <div class="admin-detail-title">
+
+                <div class="admin-detail-icon volunteer-info-icon">
+
+                    <i class="fas fa-user"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Volunteer Details
+                    </h3>
+
+                    <p>
+                        Personal and registration information.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-detail-body">
+
+            <div class="admin-detail-grid">
+
+
+                <!-- VOLUNTEER NAME -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-user me-1"></i>
+                        Volunteer Name
+
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ volunteer.user.first_name }}
+                        {{ volunteer.user.last_name }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-phone me-1"></i>
+                        Volunteer Contact
+
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ volunteer.contact }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-envelope me-1"></i>
+                        Email
+
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ volunteer.user.email }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- REGISTRATION DATE -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-calendar-alt me-1"></i>
+                        Registration Date
+
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ volunteer.regdate }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- VOLUNTEER PICTURE -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-image me-1"></i>
+                        Volunteer Picture
+
+                    </span>
+
+                    <div class="admin-detail-image">
+
+                        {% if volunteer.userpic %}
+
+                            <img src="{{ volunteer.userpic.url }}"
+                                 alt="Volunteer Picture">
+
+                        {% else %}
+
+                            <div class="admin-no-image">
+
+                                <i class="fas fa-user"></i>
+
+                                <span>
+                                    No Image
+                                </span>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- ID CARD -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-id-card me-1"></i>
+                        ID Card Picture
+
+                    </span>
+
+                    <div class="admin-detail-image">
+
+                        {% if volunteer.idpic %}
+
+                            <img src="{{ volunteer.idpic.url }}"
+                                 alt="ID Card Picture">
+
+                        {% else %}
+
+                            <div class="admin-no-image">
+
+                                <i class="fas fa-id-card"></i>
+
+                                <span>
+                                    No Image
+                                </span>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADDRESS -->
+
+                <div class="admin-detail-item admin-detail-full">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-map-marker-alt me-1"></i>
+                        Address
+
+                    </span>
+
+                    <div class="admin-description">
+
+                        {{ volunteer.address }}
+
+                    </div>
+
+                </div>
+
+
+                <!-- ABOUT -->
+
+                <div class="admin-detail-item admin-detail-full">
+
+                    <span class="admin-detail-label">
+
+                        <i class="fas fa-info-circle me-1"></i>
+                        About Volunteer
+
+                    </span>
+
+                    <div class="admin-description">
+
+                        {{ volunteer.aboutme }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         UPDATE VOLUNTEER
+    ====================================================== -->
+
+    <div class="admin-detail-card">
+
+        <div class="admin-detail-card-header">
+
+            <div class="admin-detail-title">
+
+                <div class="admin-detail-icon update-detail-icon">
+
+                    <i class="fas fa-edit"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Update Volunteer
+                    </h3>
+
+                    <p>
+                        Change volunteer status and add an administrator remark.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-detail-body">
+
+            <form method="post">
+
+                {% csrf_token %}
+
+
+                <!-- STATUS -->
+
+                <div class="admin-form-group">
+
+                    <label for="status">
+
+                        <i class="fas fa-toggle-on me-1"></i>
+
+                        Volunteer Status
+
+                    </label>
+
+
+                    <select name="status"
+                            id="status"
+                            class="form-control admin-form-control"
+                            required>
+
+                        <option value="Pending"
+                            {% if volunteer.status == "Pending" %}
+                                selected
+                            {% endif %}>
+                            Pending
+                        </option>
+
+                        <option value="Accept"
+                            {% if volunteer.status == "Accept" %}
+                                selected
+                            {% endif %}>
+                            Accept
+                        </option>
+
+                        <option value="Reject"
+                            {% if volunteer.status == "Reject" %}
+                                selected
+                            {% endif %}>
+                            Reject
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ADMIN REMARK -->
+
+                <div class="admin-form-group">
+
+                    <label for="adminremark">
+
+                        <i class="fas fa-comment-alt me-1"></i>
+
+                        Admin Remark
+
+                    </label>
+
+
+                    <textarea
+                        name="adminremark"
+                        id="adminremark"
+                        class="form-control admin-form-control"
+                        rows="5"
+                        placeholder="Enter Admin Remark"
+                        required>{{ volunteer.adminremark }}</textarea>
+
+                </div>
+
+
+                <!-- LAST UPDATED -->
+
+                <div class="admin-form-group">
+
+                    <label>
+
+                        <i class="fas fa-clock me-1"></i>
+
+                        Last Updated
+
+                    </label>
+
+                    <div class="admin-detail-value">
+
+                        {{ volunteer.updationdate }}
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="admin-form-actions">
+
+                    <a href="{% url 'accepted_volunteer' %}"
+                       class="admin-back-btn">
+
+                        <i class="fas fa-arrow-left"></i>
+
+                        Back
+
+                    </a>
+
+
+                    <button type="submit"
+                            class="admin-update-btn">
+
+                        <i class="fas fa-save"></i>
+
+                        Update Volunteer
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

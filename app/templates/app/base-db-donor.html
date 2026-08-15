@@ -1,0 +1,408 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DONSVOL - Donor Portal</title>
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link rel="icon"
+          type="image/x-icon"
+          href="{% static 'images/helping-hand.png' %}">
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/bootstrap.css' %}">
+
+
+    <!-- =====================================================
+         DATATABLE
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+
+    <!-- =====================================================
+         SIDEBAR CSS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/style-admin.css' %}">
+
+
+    <!-- =====================================================
+         DONOR DASHBOARD CSS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/style-donor.css' %}">
+
+
+    <!-- =====================================================
+         DONOR SIDEBAR CUSTOM STYLE
+    ====================================================== -->
+
+    <style>
+
+        /* ==========================================
+           DONOR SIDEBAR
+        ========================================== */
+
+        .sidebar {
+            background: #581845;
+        }
+
+
+        /* ==========================================
+           BODY
+        ========================================== */
+
+        body {
+            background: #f8f9fa;
+            font-family: 'Roboto Slab', serif;
+        }
+
+
+        /* ==========================================
+           SIDEBAR HOVER
+        ========================================== */
+
+        .sidebar ul li a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+
+        /* ==========================================
+           HOVER TEXT
+        ========================================== */
+
+        .sidebar ul li a:hover .links_name,
+        .sidebar ul li a:hover #icon {
+            color: #ffffff;
+        }
+
+
+        /* ==========================================
+           DROPDOWN
+        ========================================== */
+
+        .dropdown-menu {
+            background: #ffffff;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<div class="sidebar donor-sidebar" id="donorSidebar">
+
+
+    <!-- =====================================================
+         LOGO
+    ====================================================== -->
+
+    <div class="logo_content">
+
+        <div class="logo">
+
+            <i id="icon-home"
+               class="fa fa-hand-holding-heart"
+               aria-hidden="true">
+            </i>
+
+            <div class="logo_name">
+                Donor
+            </div>
+
+        </div>
+
+
+        <!-- SIDEBAR BUTTON -->
+
+        <span id="btn-donor-sidebar">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </span>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
+    <div class="profile_content">
+
+        <div class="profile">
+
+            <div class="profile_details">
+
+
+                <!-- USER PROFILE IMAGE -->
+
+                {% if request.user.donor_set.all.0.userpic %}
+
+                    <img
+                        src="{{ request.user.donor_set.all.0.userpic.url }}"
+                        alt="Donor Profile">
+
+                {% else %}
+
+                    <img
+                        src="{% static 'images/logo1.png' %}"
+                        alt="Donor Profile">
+
+                {% endif %}
+
+
+
+                <!-- USER INFORMATION -->
+
+                <div class="name_job">
+
+                    <div class="name">
+
+                        {{ request.user.first_name }}
+                        {{ request.user.last_name }}
+
+                    </div>
+
+
+                    <div class="email">
+
+                        {{ request.user.email }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <ul class="nav_list">
+
+
+        <!-- DASHBOARD -->
+
+        <li>
+
+            <a href="{% url 'index_donor' %}">
+
+                <i id="icon"
+                   class="fa fa-th-large"
+                   aria-hidden="true">
+                </i>
+
+                <span class="links_name">
+                    Dashboard
+                </span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- DONATE NOW -->
+
+        <li>
+
+            <a href="{% url 'donate_now' %}">
+
+                <i id="icon"
+                   class="fa fa-hand-holding-heart"
+                   aria-hidden="true">
+                </i>
+
+                <span class="links_name">
+                    Donate Now
+                </span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- DONATION HISTORY -->
+
+        <li>
+
+            <a href="{% url 'donation_history' %}">
+
+                <i id="icon"
+                   class="fa fa-history"
+                   aria-hidden="true">
+                </i>
+
+                <span class="links_name">
+                    Donation History
+                </span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- PROFILE -->
+
+        <li>
+
+            <a href="{% url 'profile_donor' %}">
+
+                <i id="icon"
+                   class="fa fa-user"
+                   aria-hidden="true">
+                </i>
+
+                <span class="links_name">
+                    Profile
+                </span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- CHANGE PASSWORD -->
+
+        <li>
+
+            <a href="{% url 'changepwd_donor' %}">
+
+                <i id="icon"
+                   class="fa fa-key"
+                   aria-hidden="true">
+                </i>
+
+                <span class="links_name">
+                    Change Password
+                </span>
+
+            </a>
+
+        </li>
+
+
+
+        <!-- LOGOUT -->
+
+        <li>
+
+            <a href="{% url 'logout' %}">
+
+                <i id="icon"
+                   class="fa fa-sign-out"
+                   aria-hidden="true">
+                </i>
+
+                <span class="links_name">
+                    Logout
+                </span>
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+</div>
+
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<div class="home_content">
+
+    {% block main %}
+    {% endblock main %}
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+{% include 'app/base-db-footer.html' %}
+
+
+
+<!-- =========================================================
+     BOOTSTRAP JAVASCRIPT
+========================================================= -->
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}">
+</script>
+
+
+
+<!-- =========================================================
+     YOUR JAVASCRIPT
+========================================================= -->
+
+<script src="{% static 'js/myscript.js' %}">
+</script>
+
+
+</body>
+
+</html>

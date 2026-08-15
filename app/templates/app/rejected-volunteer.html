@@ -1,0 +1,260 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h1 class="admin-page-title">
+                Rejected Volunteers
+            </h1>
+
+            <p class="admin-page-subtitle">
+                View and manage volunteer applications that have been rejected.
+            </p>
+
+        </div>
+
+
+        <div class="admin-page-icon rejected-volunteer-page-icon">
+
+            <i class="fas fa-user-times"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT CARD
+    ====================================================== -->
+
+    <div class="admin-content-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="admin-content-card-header">
+
+            <div>
+
+                <h3>
+                    Rejected Volunteer List
+                </h3>
+
+                <p>
+                    Volunteers whose applications were not approved.
+                </p>
+
+            </div>
+
+
+            <div class="admin-header-icon rejected-volunteer-header-icon">
+
+                <i class="fas fa-user-times"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="admin-table-wrapper">
+
+            <table id="mytable"
+                   class="table admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th scope="col">
+                            #
+                        </th>
+
+                        <th scope="col">
+                            Volunteer Name
+                        </th>
+
+                        <th scope="col">
+                            Email ID
+                        </th>
+
+                        <th scope="col">
+                            Contact
+                        </th>
+
+                        <th scope="col">
+                            Reg. Date
+                        </th>
+
+                        <th scope="col">
+                            Status
+                        </th>
+
+                        <th scope="col">
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for i in volunteer %}
+
+                    <tr>
+
+                        <!-- NUMBER -->
+
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+
+
+                        <!-- VOLUNTEER NAME -->
+
+                        <td>
+
+                            <strong>
+
+                                {{ i.user.first_name }}
+                                {{ i.user.last_name }}
+
+                            </strong>
+
+                        </td>
+
+
+                        <!-- EMAIL -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-envelope me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.user.email }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- CONTACT -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-phone me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.contact }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- REGISTRATION DATE -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-calendar-alt me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.regdate|date:"d M Y" }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span class="admin-status rejected">
+
+                                {{ i.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a href="{% url 'view_volunteerdetail' i.id %}"
+                               class="admin-action-btn">
+
+                                <i class="fas fa-eye"></i>
+
+                                View Details
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <!-- =====================================
+                         NO RECORDS
+                    ====================================== -->
+
+                    <tr>
+
+                        <td colspan="7"
+                            class="admin-empty">
+
+                            <i class="fas fa-user-times"></i>
+
+                            <h5>
+                                No Rejected Volunteers
+                            </h5>
+
+                            <p>
+                                There are currently no rejected volunteer applications.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

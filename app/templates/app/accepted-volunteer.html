@@ -1,0 +1,263 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h1 class="admin-page-title">
+                Accepted Volunteers
+            </h1>
+
+            <p class="admin-page-subtitle">
+                View and manage volunteers who have been approved by the administrator.
+            </p>
+
+        </div>
+
+        <div class="admin-page-icon accepted-volunteer-page-icon">
+            <i class="fas fa-user-check"></i>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT CARD
+    ====================================================== -->
+
+    <div class="admin-content-card">
+
+        <div class="admin-content-card-header">
+
+            <div>
+
+                <h3>
+                    Accepted Volunteer List
+                </h3>
+
+                <p>
+                    Volunteers who are currently approved and available for assignments.
+                </p>
+
+            </div>
+
+            <div class="admin-header-icon accepted-volunteer-header-icon">
+                <i class="fas fa-user-check"></i>
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             TOTAL COUNT
+        ====================================================== -->
+
+        <div class="p-3">
+
+            <strong>
+                Total Accepted Volunteers:
+            </strong>
+
+            <span class="badge bg-success">
+                {{ volunteer.count }}
+            </span>
+
+        </div>
+
+
+        <!-- =====================================================
+             TABLE
+        ====================================================== -->
+
+        <div class="admin-table-wrapper">
+
+            <table id="mytable"
+                   class="table admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>#</th>
+
+                        <th>Volunteer Name</th>
+
+                        <th>Email ID</th>
+
+                        <th>Contact</th>
+
+                        <th>Reg. Date</th>
+
+                        <th>Status</th>
+
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for i in volunteer %}
+
+                    <tr>
+
+                        <!-- NUMBER -->
+
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+
+
+                        <!-- VOLUNTEER NAME -->
+
+                        <td>
+
+                            <strong>
+
+                                {{ i.user.first_name }}
+                                {{ i.user.last_name }}
+
+                            </strong>
+
+                            {% if not i.user.first_name and not i.user.last_name %}
+
+                                <span>
+                                    {{ i.user.username }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- EMAIL -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-envelope me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.user.email }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- CONTACT -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-phone me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.contact|default:"Not provided" }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- REGISTRATION DATE -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-calendar-alt me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.regdate|date:"d M Y" }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            {% if i.status == "Accept" %}
+
+                                <span class="admin-status accepted">
+                                    Accept
+                                </span>
+
+                            {% else %}
+
+                                <span class="admin-status">
+                                    {{ i.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a href="{% url 'view_volunteerdetail' i.id %}"
+                               class="admin-action-btn">
+
+                                <i class="fas fa-eye"></i>
+
+                                View Details
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="7"
+                            class="admin-empty">
+
+                            <i class="fas fa-user-check"></i>
+
+                            <h5>
+                                No Accepted Volunteers
+                            </h5>
+
+                            <p>
+                                There are currently no accepted volunteers.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

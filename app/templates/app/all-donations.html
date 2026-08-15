@@ -1,0 +1,256 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h1 class="admin-page-title">
+                All Donations
+            </h1>
+
+            <p class="admin-page-subtitle">
+                View and manage all donation records in theBeing Human system.
+            </p>
+
+        </div>
+
+
+        <div class="admin-page-icon all-donations-page-icon">
+
+            <i class="fas fa-list"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT CARD
+    ====================================================== -->
+
+    <div class="admin-content-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="admin-content-card-header">
+
+            <div>
+
+                <h3>
+                    All Donation List
+                </h3>
+
+                <p>
+                    Complete list of donations submitted to Being Human.
+                </p>
+
+            </div>
+
+
+            <div class="admin-header-icon all-donations-header-icon">
+
+                <i class="fas fa-list"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="admin-table-wrapper">
+
+            <table id="mytable"
+                   class="table admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th scope="col">
+                            #
+                        </th>
+
+                        <th scope="col">
+                            Donation Name
+                        </th>
+
+                        <th scope="col">
+                            Donation Date
+                        </th>
+
+                        <th scope="col">
+                            Status
+                        </th>
+
+                        <th scope="col">
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for i in donation %}
+
+                    <tr>
+
+                        <!-- NUMBER -->
+
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+
+
+                        <!-- DONATION NAME -->
+
+                        <td>
+
+                            <strong>
+                                {{ i.donationname }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- DONATION DATE -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-calendar-alt me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.donationdate }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            {% if i.status == "Pending" %}
+
+                                <span class="admin-status pending">
+                                    {{ i.status }}
+                                </span>
+
+                            {% elif i.status == "Accepted" %}
+
+                                <span class="admin-status accepted">
+                                    {{ i.status }}
+                                </span>
+
+                            {% elif i.status == "Reject" %}
+
+                                <span class="admin-status rejected">
+                                    {{ i.status }}
+                                </span>
+
+                            {% elif i.status == "Volunteer Allocated" %}
+
+                                <span class="admin-status allocated">
+                                    {{ i.status }}
+                                </span>
+
+                            {% elif i.status == "Donation Received" %}
+
+                                <span class="admin-status received">
+                                    {{ i.status }}
+                                </span>
+
+                            {% elif i.status == "Donation Delivered Successfully" %}
+
+                                <span class="admin-status delivered">
+                                    {{ i.status }}
+                                </span>
+
+                            {% else %}
+
+                                <span class="admin-status">
+                                    {{ i.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a href="{% url 'delete_donation' i.id %}"
+                               class="admin-delete-btn"
+                               onclick="return confirm('Are you Sure ?')">
+
+                                <i class="fas fa-trash-alt"></i>
+
+                                Delete
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <!-- =====================================
+                         NO RECORDS
+                    ====================================== -->
+
+                    <tr>
+
+                        <td colspan="5"
+                            class="admin-empty">
+
+                            <i class="fas fa-inbox"></i>
+
+                            <h5>
+                                No Donations Found
+                            </h5>
+
+                            <p>
+                                There are currently no donation records in the system.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

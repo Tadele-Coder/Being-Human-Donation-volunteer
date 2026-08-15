@@ -1,0 +1,301 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h2 class="fw-bold">
+                Contact Message
+            </h2>
+
+            <p class="text-muted mb-0">
+                View and reply to visitor message
+            </p>
+
+        </div>
+
+        <a href="{% url 'contact_messages' %}"
+           class="btn btn-secondary">
+
+            <i class="fa-solid fa-arrow-left me-1"></i>
+            Back to Messages
+
+        </a>
+
+    </div>
+
+
+    <div class="row g-4">
+
+        <!-- =====================================================
+             MESSAGE DETAILS
+        ====================================================== -->
+
+        <div class="col-lg-5">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-dark text-white">
+
+                    <h5 class="mb-0">
+
+                        <i class="fa-solid fa-envelope me-2"></i>
+
+                        Message Details
+
+                    </h5>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    <div class="mb-3">
+
+                        <label class="fw-bold">
+                            Name
+                        </label>
+
+                        <div class="form-control bg-light">
+                            {{ contactmessage.name }}
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="fw-bold">
+                            Email
+                        </label>
+
+                        <div class="form-control bg-light">
+
+                            <a href="mailto:{{ contactmessage.email }}">
+
+                                {{ contactmessage.email }}
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="fw-bold">
+                            Phone
+                        </label>
+
+                        <div class="form-control bg-light">
+
+                            {% if contactmessage.phone %}
+                                {{ contactmessage.phone }}
+                            {% else %}
+                                Not provided
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="fw-bold">
+                            Subject
+                        </label>
+
+                        <div class="form-control bg-light">
+
+                            {{ contactmessage.subject }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+
+                        <label class="fw-bold">
+                            Received
+                        </label>
+
+                        <div class="form-control bg-light">
+
+                            {{ contactmessage.created_at|date:"M d, Y H:i" }}
+
+                        </div>
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="fw-bold">
+                            Message
+                        </label>
+
+                        <div class="border rounded p-3 bg-light"
+                             style="min-height:150px;">
+
+                            {{ contactmessage.message|linebreaks }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             REPLY
+        ====================================================== -->
+
+        <div class="col-lg-7">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-primary text-white">
+
+                    <h5 class="mb-0">
+
+                        <i class="fa-solid fa-reply me-2"></i>
+
+                        Reply to {{ contactmessage.name }}
+
+                    </h5>
+
+                </div>
+
+
+                <div class="card-body">
+
+                    {% if contactmessage.is_replied %}
+
+                        <div class="alert alert-success">
+
+                            <i class="fa-solid fa-circle-check me-2"></i>
+
+                            This message has already been replied to.
+
+                            {% if contactmessage.replied_at %}
+
+                                <br>
+
+                                <small>
+                                    Replied:
+                                    {{ contactmessage.replied_at|date:"M d, Y H:i" }}
+                                </small>
+
+                            {% endif %}
+
+                        </div>
+
+
+                        <div class="mb-4">
+
+                            <label class="fw-bold">
+                                Previous Reply
+                            </label>
+
+                            <div class="border rounded p-3 bg-light">
+
+                                {{ contactmessage.reply_message|linebreaks }}
+
+                            </div>
+
+                        </div>
+
+                    {% endif %}
+
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-bold">
+
+                                To
+
+                            </label>
+
+                            <input type="email"
+                                   class="form-control"
+                                   value="{{ contactmessage.email }}"
+                                   readonly>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label class="form-label fw-bold">
+
+                                Subject
+
+                            </label>
+
+                            <input type="text"
+                                   class="form-control"
+                                   value="Re: {{ contactmessage.subject }}"
+                                   readonly>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label for="reply_message"
+                                   class="form-label fw-bold">
+
+                                Your Reply
+
+                            </label>
+
+                            <textarea
+                                name="reply_message"
+                                id="reply_message"
+                                class="form-control"
+                                rows="10"
+                                placeholder="Write your reply here..."
+                                required></textarea>
+
+                        </div>
+
+
+                        <button type="submit"
+                                class="btn btn-primary">
+
+                            <i class="fa-solid fa-paper-plane me-2"></i>
+
+                            Send Reply
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

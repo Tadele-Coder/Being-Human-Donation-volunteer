@@ -1,0 +1,569 @@
+{% extends 'app/base-db-volunteer.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="volunteer-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="volunteer-page-header">
+
+        <div>
+
+            <h1 class="volunteer-page-title">
+                My Profile
+            </h1>
+
+            <p class="volunteer-page-subtitle">
+                View and update your personal volunteer information.
+            </p>
+
+        </div>
+
+
+        <div class="volunteer-page-icon">
+
+            <i class="fas fa-user"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE CARD
+    ====================================================== -->
+
+    <div class="volunteer-content-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="volunteer-content-card-header">
+
+            <div>
+
+                <h3>
+                    Volunteer Profile
+                </h3>
+
+                <p>
+                    Keep your volunteer information up to date.
+                </p>
+
+            </div>
+
+
+            <div class="volunteer-header-icon">
+
+                <i class="fas fa-user-edit"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             PROFILE FORM
+        ================================================== -->
+
+        <form
+            action=""
+            method="POST"
+            enctype="multipart/form-data"
+            novalidate
+        >
+
+            {% csrf_token %}
+
+
+            <div class="volunteer-profile-form">
+
+
+                <!-- =================================================
+                     PERSONAL INFORMATION
+                ================================================== -->
+
+                <div class="volunteer-profile-section">
+
+                    <div class="volunteer-profile-section-title">
+
+                        <div class="volunteer-profile-section-icon">
+
+                            <i class="fas fa-user"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Personal Information
+                            </h4>
+
+                            <p>
+                                Update your name and contact information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="volunteer-profile-grid">
+
+
+                        <!-- FIRST NAME -->
+
+                        <div class="volunteer-form-group">
+
+                            <label for="firstname">
+
+                                First Name
+
+                            </label>
+
+                            <div class="volunteer-input-wrapper">
+
+                                <i class="fas fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="firstname"
+                                    name="firstname"
+                                    placeholder="Enter First Name"
+                                    pattern="[A-Za-z]+"
+                                    value="{{ volunteer.user.first_name }}"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- LAST NAME -->
+
+                        <div class="volunteer-form-group">
+
+                            <label for="lastname">
+
+                                Last Name
+
+                            </label>
+
+                            <div class="volunteer-input-wrapper">
+
+                                <i class="fas fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    id="lastname"
+                                    name="lastname"
+                                    placeholder="Enter Last Name"
+                                    pattern="[A-Za-z]+"
+                                    value="{{ volunteer.user.last_name }}"
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- EMAIL -->
+
+                        <div class="volunteer-form-group">
+
+                            <label for="email">
+
+                                Email Address
+
+                            </label>
+
+                            <div class="volunteer-input-wrapper">
+
+                                <i class="fas fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    readonly
+                                    value="{{ volunteer.user.email }}"
+                                >
+
+                            </div>
+
+                            <small class="volunteer-field-help">
+                                Email address cannot be changed.
+                            </small>
+
+                        </div>
+
+
+                        <!-- CONTACT -->
+
+                        <div class="volunteer-form-group">
+
+                            <label for="contact">
+
+                                Contact Number
+
+                            </label>
+
+                            <div class="volunteer-input-wrapper">
+
+                                <i class="fas fa-phone"></i>
+
+                                <input
+                                    type="text"
+                                    id="contact"
+                                    name="contact"
+                                    placeholder="Contact Number"
+                                    required
+                                    value="{{ volunteer.contact }}"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROFILE PICTURES
+                ================================================== -->
+
+                <div class="volunteer-profile-section">
+
+                    <div class="volunteer-profile-section-title">
+
+                        <div class="volunteer-profile-section-icon">
+
+                            <i class="fas fa-camera"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Profile Pictures
+                            </h4>
+
+                            <p>
+                                Update your profile picture and identification document.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="volunteer-profile-image-grid">
+
+
+                        <!-- USER PROFILE -->
+
+                        <div class="volunteer-image-card">
+
+                            <div class="volunteer-image-card-title">
+
+                                <i class="fas fa-user-circle"></i>
+
+                                Profile Picture
+
+                            </div>
+
+
+                            <div class="volunteer-current-image">
+
+                                {% if volunteer.userpic %}
+
+                                    <img
+                                        src="{{ volunteer.userpic.url }}"
+                                        alt="Volunteer Profile Picture"
+                                    >
+
+                                {% else %}
+
+                                    <img
+                                        src="{% static 'images/logo1.png' %}"
+                                        alt="Default Profile Picture"
+                                    >
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <label
+                                for="userpic"
+                                class="volunteer-file-label"
+                            >
+
+                                <i class="fas fa-upload"></i>
+
+                                Choose New Picture
+
+                            </label>
+
+
+                            <input
+                                type="file"
+                                id="userpic"
+                                name="userpic"
+                                class="volunteer-file-input-hidden"
+                                accept="image/*"
+                            >
+
+                        </div>
+
+
+                        <!-- ID PROOF -->
+
+                        <div class="volunteer-image-card">
+
+                            <div class="volunteer-image-card-title">
+
+                                <i class="fas fa-id-card"></i>
+
+                                ID Proof
+
+                            </div>
+
+
+                            <div class="volunteer-current-image">
+
+                                {% if volunteer.idpic %}
+
+                                    <img
+                                        src="{{ volunteer.idpic.url }}"
+                                        alt="Volunteer ID Proof"
+                                    >
+
+                                {% else %}
+
+                                    <div class="volunteer-no-id-image">
+
+                                        <i class="fas fa-id-card"></i>
+
+                                        <span>
+                                            No ID Picture
+                                        </span>
+
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+
+                            <label
+                                for="idpic"
+                                class="volunteer-file-label"
+                            >
+
+                                <i class="fas fa-upload"></i>
+
+                                Choose New ID Proof
+
+                            </label>
+
+
+                            <input
+                                type="file"
+                                id="idpic"
+                                name="idpic"
+                                class="volunteer-file-input-hidden"
+                                accept="image/*"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ADDRESS & ABOUT
+                ================================================== -->
+
+                <div class="volunteer-profile-section">
+
+                    <div class="volunteer-profile-section-title">
+
+                        <div class="volunteer-profile-section-icon">
+
+                            <i class="fas fa-address-card"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Additional Information
+                            </h4>
+
+                            <p>
+                                Update your address and volunteer information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="volunteer-profile-full">
+
+
+                        <!-- ADDRESS -->
+
+                        <div class="volunteer-form-group">
+
+                            <label for="address">
+
+                                Address
+
+                            </label>
+
+                            <div class="volunteer-textarea-wrapper">
+
+                                <i class="fas fa-map-marker-alt"></i>
+
+                                <textarea
+                                    id="address"
+                                    name="address"
+                                    placeholder="Full Address"
+                                >{{ volunteer.address }}</textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ABOUT ME -->
+
+                        <div class="volunteer-form-group">
+
+                            <label for="aboutme">
+
+                                About Yourself
+
+                            </label>
+
+                            <div class="volunteer-textarea-wrapper">
+
+                                <i class="fas fa-comment-alt"></i>
+
+                                <textarea
+                                    id="aboutme"
+                                    name="aboutme"
+                                    placeholder="Tell us about yourself..."
+                                >{{ volunteer.aboutme }}</textarea>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ERRORS
+                ================================================== -->
+
+                {% if form.non_field_errors %}
+
+                    <div class="volunteer-profile-messages">
+
+                        {% for error in form.non_field_errors %}
+
+                            <div class="alert alert-danger">
+
+                                <i class="fas fa-exclamation-circle me-2"></i>
+
+                                {{ error }}
+
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- =================================================
+                     UPDATE BUTTON
+                ================================================== -->
+
+                <div class="volunteer-profile-actions">
+
+                    <button
+                        type="submit"
+                        class="volunteer-profile-update-btn"
+                    >
+
+                        <i class="fas fa-save"></i>
+
+                        Update Profile
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </form>
+
+
+        <!-- =================================================
+             SUCCESS / ERROR MESSAGES
+        ================================================== -->
+
+        {% if messages %}
+
+            <div class="volunteer-profile-messages">
+
+                {% for message in messages %}
+
+                    <div class="alert alert-{{ message.tags }}">
+
+                        {% if message.tags == 'success' %}
+
+                            <i class="fas fa-check-circle me-2"></i>
+
+                        {% else %}
+
+                            <i class="fas fa-info-circle me-2"></i>
+
+                        {% endif %}
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+
+    </div>
+
+</div>
+
+{% endblock main %}

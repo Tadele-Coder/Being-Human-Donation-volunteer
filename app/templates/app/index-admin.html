@@ -1,0 +1,387 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-dashboard">
+
+    <!-- =====================================================
+         DASHBOARD HEADER
+    ====================================================== -->
+
+    <div class="dashboard-header">
+
+        <div>
+
+            <h1 class="dashboard-title">
+                Admin Dashboard
+            </h1>
+
+            <p class="dashboard-subtitle">
+                Welcome,
+                <strong>
+                    {{ request.user.first_name }}
+                    {{ request.user.last_name }}
+                </strong>.
+               
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-date">
+
+            <i class="fa fa-calendar-alt me-2"></i>
+
+           Being Human Management
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         MAIN STATISTICS
+    ====================================================== -->
+
+    <div class="row g-4">
+
+
+        <!-- ================= DONORS ================= -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="dashboard-stat-card donor-card">
+
+                <div class="stat-icon">
+
+                    <i class="fa fa-users"></i>
+
+                </div>
+
+
+                <div class="stat-content">
+
+                    <div class="stat-label">
+                        Total Donors
+                    </div>
+
+                    <div class="stat-number">
+                        {{ totaldonors }}
+                    </div>
+
+                    <a href="{% url 'manage_donor' %}"
+                       class="stat-link">
+
+                        View Donors
+                        <i class="fa fa-arrow-right ms-1"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= VOLUNTEERS ================= -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="dashboard-stat-card volunteer-card">
+
+                <div class="stat-icon">
+
+                    <i class="fa fa-hand-holding-heart"></i>
+
+                </div>
+
+
+                <div class="stat-content">
+
+                    <div class="stat-label">
+                        Total Volunteers
+                    </div>
+
+                    <div class="stat-number">
+                        {{ totalvolunteers }}
+                    </div>
+
+                    <a href="{% url 'accepted_volunteer' %}"
+                       class="stat-link">
+
+                        View Volunteers
+                        <i class="fa fa-arrow-right ms-1"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= DONATIONS ================= -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="dashboard-stat-card donation-card">
+
+                <div class="stat-icon">
+
+                    <i class="fa fa-gift"></i>
+
+                </div>
+
+
+                <div class="stat-content">
+
+                    <div class="stat-label">
+                        Total Donations
+                    </div>
+
+                    <div class="stat-number">
+                        {{ totaldonations }}
+                    </div>
+
+                    <a href="{% url 'all_donations' %}"
+                       class="stat-link">
+
+                        View Donations
+                        <i class="fa fa-arrow-right ms-1"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= AREAS ================= -->
+
+        <div class="col-xl-3 col-md-6">
+
+            <div class="dashboard-stat-card area-card">
+
+                <div class="stat-icon">
+
+                    <i class="fa fa-map-marker-alt"></i>
+
+                </div>
+
+
+                <div class="stat-content">
+
+                    <div class="stat-label">
+                        Donation Areas
+                    </div>
+
+                    <div class="stat-number">
+                        {{ totaldonationareas }}
+                    </div>
+
+                    <a href="{% url 'manage_area' %}"
+                       class="stat-link">
+
+                        Manage Areas
+                        <i class="fa fa-arrow-right ms-1"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DONATION OVERVIEW
+    ====================================================== -->
+
+    <div class="section-heading">
+
+        <div>
+
+            <h3>
+                Donation Overview
+            </h3>
+
+            <p>
+                Monitor donation requests and delivery progress.
+            </p>
+
+        </div>
+
+        <i class="fa fa-chart-line"></i>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         DONATION STATUS CARDS
+    ====================================================== -->
+
+    <div class="row g-4">
+
+
+        <!-- ================= PENDING ================= -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="status-card pending-card">
+
+                <div class="status-card-top">
+
+                    <div class="status-icon">
+
+                        <i class="fa fa-clock"></i>
+
+                    </div>
+
+                    <span class="status-badge pending">
+                        Pending
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ totalpendingdonations }}
+                </h2>
+
+                <h5>
+                    New Donation Requests
+                </h5>
+
+                <p>
+                    Donations waiting for administration review.
+                </p>
+
+
+                <a href="{% url 'pending_donation' %}">
+
+                    Review Requests
+
+                    <i class="fa fa-arrow-right ms-1"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= ACCEPTED ================= -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="status-card accepted-card">
+
+                <div class="status-card-top">
+
+                    <div class="status-icon">
+
+                        <i class="fa fa-check-circle"></i>
+
+                    </div>
+
+                    <span class="status-badge accepted">
+                        Accepted
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ totalaccepteddonations }}
+                </h2>
+
+                <h5>
+                    Accepted Donations
+                </h5>
+
+                <p>
+                    Donations that have been approved for processing.
+                </p>
+
+
+                <a href="{% url 'accepted_donation' %}">
+
+                    View Accepted
+
+                    <i class="fa fa-arrow-right ms-1"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================= DELIVERED ================= -->
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="status-card delivered-card">
+
+                <div class="status-card-top">
+
+                    <div class="status-icon">
+
+                        <i class="fa fa-truck"></i>
+
+                    </div>
+
+                    <span class="status-badge delivered">
+                        Delivered
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    {{ totaldelivereddonations }}
+                </h2>
+
+                <h5>
+                    Delivered Donations
+                </h5>
+
+                <p>
+                    Donations successfully delivered to recipients.
+                </p>
+
+
+                <a href="{% url 'donationdelivered_admin' %}">
+
+                    View Delivered
+
+                    <i class="fa fa-arrow-right ms-1"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    
+{% endblock main %}

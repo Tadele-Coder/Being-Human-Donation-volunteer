@@ -1,0 +1,381 @@
+{% extends 'app/base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="donor-dashboard">
+
+    <!-- =====================================================
+         WELCOME BANNER
+    ====================================================== -->
+
+    <section class="donor-welcome">
+
+        <div class="donor-welcome-content">
+
+            <div class="donor-welcome-icon">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+
+            <div>
+
+                <span class="donor-small-title">
+                   Being Human DONOR PORTAL
+                </span>
+
+                <h1>
+                    Welcome back,
+                    {{ request.user.first_name }}!
+                </h1>
+
+                <p>
+                    Every donation makes a difference.
+                    Thank you for helping people in need.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <a href="{% url 'donate_now' %}" class="donor-main-button">
+
+            <i class="fas fa-heart me-2"></i>
+
+            Donate Now
+
+        </a>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DONATION JOURNEY
+    ====================================================== -->
+
+    <section class="donor-journey">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    YOUR IMPACT
+                </span>
+
+                <h2>
+                    Your Donation Journey
+                </h2>
+
+                <p>
+                    See how your donations are making a difference.
+                </p>
+
+            </div>
+
+            <i class="fas fa-route"></i>
+
+        </div>
+
+
+        <div class="journey-row">
+
+
+            <!-- TOTAL -->
+
+            <div class="journey-step">
+
+                <div class="journey-circle journey-purple">
+
+                    <i class="fas fa-heart"></i>
+
+                </div>
+
+                <div class="journey-number">
+                    {{ donationcount }}
+                </div>
+
+                <h5>
+                    Donations
+                </h5>
+
+                <small>
+                    Submitted by you
+                </small>
+
+            </div>
+
+
+            <div class="journey-line"></div>
+
+
+            <!-- ACCEPTED -->
+
+            <div class="journey-step">
+
+                <div class="journey-circle journey-green">
+
+                    <i class="fas fa-check"></i>
+
+                </div>
+
+                <div class="journey-number">
+                    {{ acceptedcount }}
+                </div>
+
+                <h5>
+                    Accepted
+                </h5>
+
+                <small>
+                    Approved donations
+                </small>
+
+            </div>
+
+
+            <div class="journey-line"></div>
+
+
+            <!-- DELIVERED -->
+
+            <div class="journey-step">
+
+                <div class="journey-circle journey-blue">
+
+                    <i class="fas fa-truck"></i>
+
+                </div>
+
+                <div class="journey-number">
+                    {{ deliveredcount }}
+                </div>
+
+                <h5>
+                    Delivered
+                </h5>
+
+                <small>
+                    Reached people in need
+                </small>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DONATION STATUS
+    ====================================================== -->
+
+    <section class="donor-status">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    DONATION STATUS
+                </span>
+
+                <h2>
+                    Your Donations
+                </h2>
+
+                <p>
+                    Track the current status of your donations.
+                </p>
+
+            </div>
+
+            <a href="{% url 'donation_history' %}"
+               class="view-history">
+
+                View History
+                <i class="fas fa-arrow-right ms-2"></i>
+
+            </a>
+
+        </div>
+
+
+        <div class="row g-4">
+
+
+            <!-- PENDING -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="donor-status-card pending-card">
+
+                    <div class="status-icon">
+
+                        <i class="fas fa-clock"></i>
+
+                    </div>
+
+                    <div class="status-content">
+
+                        <span>
+                            Pending
+                        </span>
+
+                        <h3>
+                            {{ pendingcount }}
+                        </h3>
+
+                        <p>
+                            Waiting for administration review.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACCEPTED -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="donor-status-card accepted-card">
+
+                    <div class="status-icon">
+
+                        <i class="fas fa-check-circle"></i>
+
+                    </div>
+
+                    <div class="status-content">
+
+                        <span>
+                            Accepted
+                        </span>
+
+                        <h3>
+                            {{ acceptedcount }}
+                        </h3>
+
+                        <p>
+                            Your donations approved for processing.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- DELIVERED -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="donor-status-card delivered-card">
+
+                    <div class="status-icon">
+
+                        <i class="fas fa-hands-helping"></i>
+
+                    </div>
+
+                    <div class="status-content">
+
+                        <span>
+                            Successfully Delivered
+                        </span>
+
+                        <h3>
+                            {{ deliveredcount }}
+                        </h3>
+
+                        <p>
+                            Donations delivered to people in need.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- REJECTED -->
+
+            <div class="col-lg-4 col-md-6">
+
+                <div class="donor-status-card rejected-card">
+
+                    <div class="status-icon">
+
+                        <i class="fas fa-times-circle"></i>
+
+                    </div>
+
+                    <div class="status-content">
+
+                        <span>
+                            Rejected
+                        </span>
+
+                        <h3>
+                            {{ rejectedcount }}
+                        </h3>
+
+                        <p>
+                            Donations that were not accepted.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="col-lg-8 col-md-6">
+
+                <div class="impact-card">
+
+                    <div class="impact-icon">
+
+                        <i class="fas fa-heart"></i>
+
+                    </div>
+
+                    <div>
+
+                        <span>
+                            YOUR CONTRIBUTION
+                        </span>
+
+                        <h3>
+                            Thank you for making an impact!
+                        </h3>
+
+                        <p>
+                            Your generosity helps connect resources
+                            with people and communities who need them.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    
+{% endblock main %}

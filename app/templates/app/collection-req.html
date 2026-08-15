@@ -1,0 +1,265 @@
+{% extends 'app/base-db-volunteer.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="volunteer-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="volunteer-page-header">
+
+        <div>
+
+            <h1 class="volunteer-page-title">
+                New Donation Collection Request
+            </h1>
+
+            <p class="volunteer-page-subtitle">
+                Review and manage donation requests assigned for collection.
+            </p>
+
+        </div>
+
+
+        <div class="volunteer-page-icon">
+
+            <i class="fas fa-hand-holding-heart"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT CARD
+    ====================================================== -->
+
+    <div class="volunteer-content-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="volunteer-content-card-header">
+
+            <div>
+
+                <h3>
+                    Donation Collection Requests
+                </h3>
+
+                <p>
+                    New donation requests available for collection
+                </p>
+
+            </div>
+
+
+            <div class="volunteer-header-icon">
+
+                <i class="fas fa-list"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="volunteer-table-wrapper">
+
+            <table
+                id="mytable"
+                class="volunteer-table data"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Donation Name
+                        </th>
+
+                        <th>
+                            Collection Location
+                        </th>
+
+                        <th>
+                            Donation Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for i in donation %}
+
+                    <tr>
+
+
+                        <!-- NUMBER -->
+
+                        <td>
+
+                            <strong>
+                                {{ forloop.counter }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- DONATION NAME -->
+
+                        <td>
+
+                            <div class="volunteer-donation-name">
+
+                                <div class="volunteer-donation-icon">
+
+                                    <i class="fas fa-gift"></i>
+
+                                </div>
+
+                                <span>
+                                    {{ i.donationname }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- COLLECTION LOCATION -->
+
+                        <td>
+
+                            <div class="volunteer-location">
+
+                                <i class="fas fa-map-marker-alt"></i>
+
+                                <span>
+                                    {{ i.collectionloc }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- DONATION DATE -->
+
+                        <td>
+
+                            <div class="volunteer-date">
+
+                                <i class="far fa-calendar-alt"></i>
+
+                                <span>
+                                    {{ i.donationdate }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span class="volunteer-status pending">
+
+                                <i class="fas fa-clock"></i>
+
+                                {{ i.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a
+                                href="{% url 'donationcollection_detail' i.id %}"
+                                class="volunteer-action-btn"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                View Details
+
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+
+                    <tr>
+
+                        <td
+                            colspan="6"
+                            class="volunteer-empty"
+                        >
+
+                            <i class="fas fa-inbox"></i>
+
+                            <h5>
+                                No Donation Collection Request Found
+                            </h5>
+
+                            <p>
+                                There are currently no new donation
+                                collection requests.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

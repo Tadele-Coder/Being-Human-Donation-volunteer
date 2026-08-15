@@ -1,0 +1,188 @@
+
+{% load static %}
+
+<nav class="navbar navbar-expand-lg donsvol-navbar sticky-top">
+
+
+<div class="container">
+
+    <!-- =========================================
+         Being Human LOGO
+         ========================================= -->
+    <a class="navbar-brand donsvol-logo"
+       href="{% url 'index' %}">
+
+        <span class="logo-icon">
+            <i class="fas fa-hands-helping"></i>
+        </span>
+
+        <span class="logo-text">
+            Being Human
+            <small>Donation &amp; Volunteer</small>
+        </span>
+
+    </a>
+
+
+    <!-- =========================================
+         MOBILE MENU BUTTON
+         ========================================= -->
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+
+    <!-- =========================================
+         NAVIGATION
+         ========================================= -->
+    <div class="collapse navbar-collapse"
+         id="navbarSupportedContent">
+
+        <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
+
+
+            <!-- HOME -->
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'index' %}">
+                    Home
+                </a>
+            </li>
+
+
+            <!-- ABOUT -->
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'about' %}">
+                    About Us
+                </a>
+            </li>
+
+
+            <!-- DONATE -->
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'index' %}#dovo">
+                    Donate
+                </a>
+            </li>
+
+
+            <!-- GALLERY -->
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'gallery' %}">
+                    Gallery
+                </a>
+            </li>
+
+
+            <!-- CONTACT -->
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'contact' %}">
+                    Contact
+                </a>
+            </li>
+
+
+            <!-- =====================================
+                 LOGIN DROPDOWN
+                 ===================================== -->
+            <li class="nav-item donsvol-login">
+
+                <a class="nav-link"
+                   href="#"
+                   id="loginDropdownButton">
+
+                    <i class="fas fa-sign-in-alt me-1"></i>
+
+                    Login
+
+                    <i class="fas fa-chevron-down ms-1 login-arrow"></i>
+
+                </a>
+
+
+                <!-- Login Menu -->
+                <ul class="donsvol-login-menu"
+                    id="loginDropdownMenu">
+
+                    <!-- Donor -->
+                    <li>
+                        <a href="{% url 'login_donor' %}">
+
+                            <i class="fas fa-hand-holding-heart"></i>
+
+                            Donor Login
+
+                        </a>
+                    </li>
+
+
+                    <!-- Volunteer -->
+                    <li>
+                        <a href="{% url 'login_volunteer' %}">
+
+                            <i class="fas fa-users"></i>
+
+                            Volunteer Login
+
+                        </a>
+                    </li>
+
+
+                    <!-- Divider -->
+                    <li class="login-divider"></li>
+
+
+                    <!-- Admin -->
+                    <li>
+                        <a href="{% url 'login_admin' %}">
+
+                            <i class="fas fa-user-shield"></i>
+
+                            Admin Login
+
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- =====================================
+                 DONATE NOW BUTTON
+                 ===================================== -->
+            <li class="nav-item">
+
+                <a class="navbar-donate-btn"
+                   href="{% url 'index' %}#dovo">
+
+                    <i class="fas fa-heart me-2"></i>
+
+                    Donate Now
+
+                </a>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+</nav>
+
+

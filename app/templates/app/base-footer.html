@@ -1,0 +1,196 @@
+{% load static %}
+
+<footer class="donsvol-footer">
+
+
+<div class="container">
+
+    <!-- =========================================
+         MAIN FOOTER
+         ========================================= -->
+
+    <div class="row g-4 footer-main">
+
+
+        <!--Being Human -->
+        <div class="col-lg-5 col-md-6">
+
+            <h3 class="footer-logo">
+                <span class="footer-logo-icon">
+                    <i class="fas fa-hands-helping"></i>
+                </span>
+
+                <span>
+                   Being Human
+                    <small>Donation &amp; Volunteer</small>
+                </span>
+            </h3>
+
+
+            <p class="footer-text">
+               Being Human connects donors and volunteers with people
+                and communities in need. Together, we can donate,
+                volunteer, and make a meaningful impact.
+            </p>
+
+
+            <!-- Social Media -->
+            <div class="footer-social">
+
+                <a href="#"
+                   aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+
+                <a href="#"
+                   aria-label="Telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+
+                <a href="#"
+                   aria-label="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+
+                <a href="#"
+                   aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+
+                <a href="#"
+                   aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+        <div class="col-lg-3 col-md-6">
+
+            <h5 class="footer-title">
+                Quick Links
+            </h5>
+
+            <ul class="footer-links">
+
+                <li>
+                    <a href="{% url 'index' %}">
+                        <i class="fas fa-angle-right"></i>
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'index' %}#about">
+                        <i class="fas fa-angle-right"></i>
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'index' %}#dovo">
+                        <i class="fas fa-angle-right"></i>
+                        Donate
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'gallery' %}">
+                        <i class="fas fa-angle-right"></i>
+                        Gallery
+                    </a>
+                </li>
+
+                <li>
+                    <a href="{% url 'index' %}#contact">
+                        <i class="fas fa-angle-right"></i>
+                        Contact Us
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- CONTACT -->
+        <div class="col-lg-4 col-md-12">
+
+            <h5 class="footer-title">
+                Contact Us
+            </h5>
+
+
+            <div class="footer-contact">
+
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Addis Ababa, Ethiopia</span>
+                </p>
+
+                <p>
+                    <i class="fas fa-phone-alt"></i>
+                    <span>+251 911 168 881</span>
+                </p>
+
+                <p>
+                    <i class="fas fa-envelope"></i>
+                    <span>mmentade@yahoo.com</span>
+                </p>
+
+            </div>
+
+
+            <a href="{% url 'index' %}#dovo"
+               class="footer-donate-btn">
+
+                <i class="fas fa-heart me-2"></i>
+
+                Donate Now
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         COPYRIGHT
+         ========================================= -->
+
+    <div class="footer-bottom">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-6 text-center text-md-start">
+
+                <p class="mb-0">
+                    © {% now "Y" %}
+                    <strong>Tadele Mengistu</strong>.
+                    All Rights Reserved.
+                </p>
+
+            </div>
+
+
+            <div class="col-md-6 text-center text-md-end mt-2 mt-md-0">
+
+                <p class="mb-0">
+                    Donate. Volunteer.
+                    <strong>Make an Impact.</strong>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</footer>

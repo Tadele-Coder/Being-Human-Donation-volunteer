@@ -1,0 +1,345 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<section class="login-section py-5">
+
+    <div class="container py-5">
+
+        <div class="row justify-content-center align-items-center">
+
+
+            <!-- =====================================================
+                 LEFT SIDE
+            ====================================================== -->
+
+            <div class="col-lg-5 mb-5 mb-lg-0">
+
+                <div class="login-intro pe-lg-5">
+
+                    <div class="login-icon mb-4">
+
+                        <i class="fas fa-user-plus"></i>
+
+                    </div>
+
+
+                    <h1 class="fw-bold mb-3">
+                        Join Being Human
+                    </h1>
+
+
+                    <h4 class="fw-semibold mb-3">
+                        Become a Volunteer
+                    </h4>
+
+
+                    <p class="text-muted mb-4">
+
+                        Create your Being Human volunteer account and
+                        become part of a community working together
+                        to support people in need.
+
+                    </p>
+
+
+                    <!-- =================================================
+                         VOLUNTEER FEATURES
+                    ================================================== -->
+
+                    <div class="login-features">
+
+
+                        <div class="d-flex align-items-center mb-3">
+
+                            <i class="fas fa-check-circle me-3"></i>
+
+                            <span>
+                                Help collect donations
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex align-items-center mb-3">
+
+                            <i class="fas fa-check-circle me-3"></i>
+
+                            <span>
+                                Support donors and beneficiaries
+                            </span>
+
+                        </div>
+
+
+                        <div class="d-flex align-items-center">
+
+                            <i class="fas fa-check-circle me-3"></i>
+
+                            <span>
+                                Make a positive community impact
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================================================
+                 SIGN UP FORM
+            ====================================================== -->
+
+            <div class="col-lg-5">
+
+                <div class="login-card">
+
+
+                    <!-- =================================================
+                         FORM HEADER
+                    ================================================== -->
+
+                    <div class="text-center mb-4">
+
+
+                        <div class="login-form-icon mb-3">
+
+                            <i class="fas fa-user-plus"></i>
+
+                        </div>
+
+
+                        <h2 class="fw-bold">
+                            Volunteer Sign Up
+                        </h2>
+
+
+                        <p class="text-muted">
+
+                            Create your volunteer account
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SUCCESS / ERROR MESSAGES
+                    ================================================== -->
+
+                    {% if messages %}
+
+                        {% for message in messages %}
+
+                            <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+
+                                {{ message }}
+
+                                <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="alert">
+                                </button>
+
+                            </div>
+
+                        {% endfor %}
+
+                    {% endif %}
+
+
+                    <!-- =================================================
+                         SIGN UP FORM
+                    ================================================== -->
+
+                    <form action=""
+                          method="POST"
+                          enctype="multipart/form-data"
+                          novalidate>
+
+                        {% csrf_token %}
+
+
+                        <!-- =================================================
+                             USER ACCOUNT INFORMATION
+                        ================================================== -->
+
+                        {% for fm in form1 %}
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="{{ fm.id_for_label }}"
+                                    class="form-label fw-semibold">
+
+                                    {{ fm.label }}
+
+                                </label>
+
+
+                                {{ fm }}
+
+
+                                {% if fm.errors %}
+
+                                    <div class="text-danger small mt-1">
+
+                                        {{ fm.errors|striptags }}
+
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endfor %}
+
+
+                        <!-- =================================================
+                             VOLUNTEER INFORMATION
+                        ================================================== -->
+
+                        {% for fm in form2 %}
+
+                            <div class="mb-4">
+
+                                <label
+                                    for="{{ fm.id_for_label }}"
+                                    class="form-label fw-semibold">
+
+                                    {{ fm.label }}
+
+                                </label>
+
+
+                                {{ fm }}
+
+
+                                {% if fm.errors %}
+
+                                    <div class="text-danger small mt-1">
+
+                                        {{ fm.errors|striptags }}
+
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                        {% endfor %}
+
+
+                        <!-- =================================================
+                             NON-FIELD ERRORS - FORM 1
+                        ================================================== -->
+
+                        {% for error in form1.non_field_errors %}
+
+                            <div class="alert alert-danger">
+
+                                <i class="fas fa-exclamation-circle me-2"></i>
+
+                                {{ error }}
+
+                            </div>
+
+                        {% endfor %}
+
+
+                        <!-- =================================================
+                             NON-FIELD ERRORS - FORM 2
+                        ================================================== -->
+
+                        {% for error in form2.non_field_errors %}
+
+                            <div class="alert alert-danger">
+
+                                <i class="fas fa-exclamation-circle me-2"></i>
+
+                                {{ error }}
+
+                            </div>
+
+                        {% endfor %}
+
+
+                        <!-- =================================================
+                             SUBMIT
+                        ================================================== -->
+
+                        <button
+                            type="submit"
+                            class="btn login-btn w-100 py-3 mt-2">
+
+                            <i class="fas fa-user-plus me-2"></i>
+
+                            Create Volunteer Account
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- =================================================
+                         LOGIN LINK
+                    ================================================== -->
+
+                    <div class="text-center mt-4">
+
+                        <p class="text-muted mb-2">
+
+                            Already have an account?
+
+                        </p>
+
+
+                        <a
+                            href="{% url 'login_volunteer' %}"
+                            class="back-home">
+
+                            <i class="fas fa-sign-in-alt me-2"></i>
+
+                            Login
+
+                        </a>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BACK HOME
+                    ================================================== -->
+
+                    <div class="text-center mt-3">
+
+                        <a
+                            href="{% url 'index' %}"
+                            class="back-home">
+
+                            <i class="fas fa-arrow-left me-2"></i>
+
+                            Back to Home
+
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock main %}

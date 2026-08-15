@@ -1,0 +1,333 @@
+{% extends 'app/base-db-volunteer.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="volunteer-dashboard">
+
+
+    <!-- =====================================================
+         WELCOME HEADER
+    ====================================================== -->
+
+    <div class="volunteer-welcome">
+
+        <div class="volunteer-welcome-content">
+
+            <div class="volunteer-welcome-icon">
+
+                <i class="fas fa-hands-helping"></i>
+
+            </div>
+
+            <div>
+
+                <h1>
+                    Welcome,
+                    {{ request.user.first_name }}
+                    {{ request.user.last_name }}
+                </h1>
+
+                <p>
+                    Thank you for helping make a difference in
+                    our community.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="volunteer-welcome-date">
+
+            <i class="far fa-calendar-alt"></i>
+
+            Volunteer Dashboard
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <div class="volunteer-stats-grid">
+
+
+        <!-- =================================================
+             NEW COLLECTION REQUEST
+        ================================================== -->
+
+        <div class="volunteer-stat-card collection-card">
+
+            <div class="volunteer-stat-top">
+
+                <div>
+
+                    <p class="volunteer-stat-label">
+                        New Collection Requests
+                    </p>
+
+                    <h2 class="volunteer-stat-number">
+                        {{ totalCollectionReq }}
+                    </h2>
+
+                </div>
+
+
+                <div class="volunteer-stat-icon">
+
+                    <i class="fas fa-list"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="volunteer-stat-footer">
+
+                <span>
+                    Donation requests waiting for collection
+                </span>
+
+
+                <a href="{% url 'collection_req' %}">
+
+                    View Details
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DONATION RECEIVED
+        ================================================== -->
+
+        <div class="volunteer-stat-card received-card">
+
+            <div class="volunteer-stat-top">
+
+                <div>
+
+                    <p class="volunteer-stat-label">
+                        Total Donation Received
+                    </p>
+
+                    <h2 class="volunteer-stat-number">
+                        {{ totalRecDonation }}
+                    </h2>
+
+                </div>
+
+
+                <div class="volunteer-stat-icon">
+
+                    <i class="fas fa-check-circle"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="volunteer-stat-footer">
+
+                <span>
+                    Donations successfully collected
+                </span>
+
+
+                <a href="{% url 'donationrec_volunteer' %}">
+
+                    View Details
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DONATION NOT RECEIVED
+        ================================================== -->
+
+        <div class="volunteer-stat-card not-received-card">
+
+            <div class="volunteer-stat-top">
+
+                <div>
+
+                    <p class="volunteer-stat-label">
+                        Donation Not Received
+                    </p>
+
+                    <h2 class="volunteer-stat-number">
+                        {{ totalNotRecDonation }}
+                    </h2>
+
+                </div>
+
+
+                <div class="volunteer-stat-icon">
+
+                    <i class="fas fa-times-circle"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="volunteer-stat-footer">
+
+                <span>
+                    Donations that were not collected
+                </span>
+
+
+                <a href="{% url 'donationnotrec_volunteer' %}">
+
+                    View Details
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             DONATION DELIVERED
+        ================================================== -->
+
+        <div class="volunteer-stat-card delivered-card">
+
+            <div class="volunteer-stat-top">
+
+                <div>
+
+                    <p class="volunteer-stat-label">
+                        Total Donation Delivered
+                    </p>
+
+                    <h2 class="volunteer-stat-number">
+                        {{ totalDonationDelivered }}
+                    </h2>
+
+                </div>
+
+
+                <div class="volunteer-stat-icon">
+
+                    <i class="fas fa-truck"></i>
+
+                </div>
+
+            </div>
+
+
+            <div class="volunteer-stat-footer">
+
+                <span>
+                    Donations successfully delivered
+                </span>
+
+
+                <a href="{% url 'donationdelivered_volunteer' %}">
+
+                    View Details
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         VOLUNTEER INFORMATION
+    ====================================================== -->
+
+    <div class="volunteer-dashboard-info">
+
+
+        <div class="volunteer-info-card">
+
+
+            <div class="volunteer-info-icon">
+
+                <i class="fas fa-heart"></i>
+
+            </div>
+
+
+            <div>
+
+                <h3>
+                    Thank You for Volunteering
+                </h3>
+
+                <p>
+                    Your time and effort help connect donors with
+                    people and communities who need support.
+                    Every collection and delivery makes a difference.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="volunteer-quick-card">
+
+            <div class="volunteer-quick-icon">
+
+                <i class="fas fa-hand-holding-heart"></i>
+
+            </div>
+
+
+            <div>
+
+                <h4>
+                    Ready to help?
+                </h4>
+
+                <p>
+                    Check your new donation collection requests.
+                </p>
+
+                <a href="{% url 'collection_req' %}">
+
+                    View Collection Requests
+
+                    <i class="fas fa-arrow-right ms-1"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+{% endblock main %}

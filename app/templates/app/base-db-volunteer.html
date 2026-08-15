@@ -1,0 +1,362 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>DONSVOL Volunteer Dashboard</title>
+
+
+    <!-- =====================================================
+         FAVICON
+    ====================================================== -->
+
+    <link rel="icon"
+          type="image/x-icon"
+          href="{% static 'images/helping-hand.png' %}">
+
+
+    <!-- =====================================================
+         FONT AWESOME
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+
+
+    <!-- =====================================================
+         GOOGLE FONT
+    ====================================================== -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/bootstrap.css' %}">
+
+
+    <!-- =====================================================
+         DATATABLE
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+
+
+    <!-- =====================================================
+         VOLUNTEER CSS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="{% static 'css/style-volunteer.css' %}">
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<div class="sidebar" id="volunteerSidebar">
+
+
+    <!-- =====================================================
+         LOGO + TOGGLE
+    ====================================================== -->
+
+    <div class="logo_content">
+
+        <div class="logo">
+
+            <i class="fa fa-hands-helping"></i>
+
+            <div class="logo_name">
+               Being Human
+            </div>
+
+        </div>
+
+
+        <button
+            type="button"
+            id="btn-sidebar"
+            class="sidebar-toggle"
+            title="Toggle Sidebar"
+            aria-label="Toggle Sidebar">
+
+            <i class="fa fa-bars"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         PROFILE
+    ====================================================== -->
+
+    <div class="profile_content">
+
+        <div class="profile">
+
+            <div class="profile_details">
+
+
+                {% if request.user.volunteer_set.all.0.userpic %}
+
+                    <img
+                        src="{{ request.user.volunteer_set.all.0.userpic.url }}"
+                        alt="Volunteer Profile">
+
+                {% else %}
+
+                    <img
+                        src="{% static 'images/logo1.png' %}"
+                        alt="Volunteer Profile">
+
+                {% endif %}
+
+
+                <div class="name_job">
+
+                    <div class="name">
+
+                        {{ request.user.first_name }}
+                        {{ request.user.last_name }}
+
+                    </div>
+
+
+                    <div class="email">
+
+                        {{ request.user.email }}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         NAVIGATION
+    ====================================================== -->
+
+    <ul class="nav_list">
+
+
+        <!-- DASHBOARD -->
+
+        <li>
+
+            <a href="{% url 'index_volunteer' %}">
+
+                <i class="fa fa-th-large"></i>
+
+                <span class="links_name">
+                    Dashboard
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- COLLECTION REQUEST -->
+
+        <li>
+
+            <a href="{% url 'collection_req' %}">
+
+                <i class="fa fa-hand-holding-heart"></i>
+
+                <span class="links_name">
+                    Donation Collection Request
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- COLLECTION HISTORY -->
+
+        <li class="sidebar-dropdown">
+
+            <a href="#"
+               class="dropdown-toggle"
+               data-bs-toggle="dropdown"
+               aria-expanded="false">
+
+                <i class="fa fa-history"></i>
+
+                <span class="links_name">
+                    Collection History
+                </span>
+
+                <i class="down-arrow fa-solid fa-angle-down"></i>
+
+            </a>
+
+
+            <ul class="dropdown-menu">
+
+
+                <li>
+
+                    <a class="dropdown-item"
+                       href="{% url 'donationrec_volunteer' %}">
+
+                        <i class="fa fa-check-circle me-2"></i>
+
+                        Donation Received
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a class="dropdown-item"
+                       href="{% url 'donationnotrec_volunteer' %}">
+
+                        <i class="fa fa-times-circle me-2"></i>
+
+                        Donation Not Received
+
+                    </a>
+
+                </li>
+
+
+                <li>
+
+                    <a class="dropdown-item"
+                       href="{% url 'donationdelivered_volunteer' %}">
+
+                        <i class="fa fa-truck me-2"></i>
+
+                        Donation Delivered
+
+                    </a>
+
+                </li>
+
+
+            </ul>
+
+        </li>
+
+
+        <!-- PROFILE -->
+
+        <li>
+
+            <a href="{% url 'profile_volunteer' %}">
+
+                <i class="fa fa-user"></i>
+
+                <span class="links_name">
+                    Profile
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- CHANGE PASSWORD -->
+
+        <li>
+
+            <a href="{% url 'changepwd_volunteer' %}">
+
+                <i class="fa fa-key"></i>
+
+                <span class="links_name">
+                    Change Password
+                </span>
+
+            </a>
+
+        </li>
+
+
+        <!-- LOGOUT -->
+
+        <li>
+
+            <a href="{% url 'logout' %}">
+
+                <i class="fa fa-sign-out-alt"></i>
+
+                <span class="links_name">
+                    Logout
+                </span>
+
+            </a>
+
+        </li>
+
+
+    </ul>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================= -->
+
+<div class="home_content" id="volunteerContent">
+
+    {% block main %}
+    {% endblock main %}
+
+
+    {% include 'app/base-db-footer.html' %}
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+<script src="{% static 'js/myscript.js' %}"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+{% extends 'app/base-db-volunteer.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="volunteer-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="volunteer-page-header">
+
+        <div>
+
+            <h1 class="volunteer-page-title">
+                Donation Delivered Successfully
+                <span aria-hidden="true">😊</span>
+            </h1>
+
+            <p class="volunteer-page-subtitle">
+                View donations that have been successfully delivered
+                to their destination.
+            </p>
+
+        </div>
+
+
+        <div class="volunteer-page-icon delivered">
+
+            <i class="fas fa-truck"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT CARD
+    ====================================================== -->
+
+    <div class="volunteer-content-card">
+
+
+        <!-- CARD HEADER -->
+
+        <div class="volunteer-content-card-header">
+
+            <div>
+
+                <h3>
+                    Delivered Donations
+                </h3>
+
+                <p>
+                    Donations successfully delivered by volunteers
+                </p>
+
+            </div>
+
+
+            <div class="volunteer-header-icon delivered">
+
+                <i class="fas fa-check-circle"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="volunteer-table-wrapper">
+
+            <table
+                id="mytable"
+                class="volunteer-table data"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Donation Name
+                        </th>
+
+                        <th>
+                            Donation Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for i in donation %}
+
+                    <tr>
+
+
+                        <!-- NUMBER -->
+
+                        <td>
+
+                            <strong>
+                                {{ forloop.counter }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- DONATION NAME -->
+
+                        <td>
+
+                            <div class="volunteer-donation-name">
+
+                                <div class="volunteer-donation-icon delivered">
+
+                                    <i class="fas fa-gift"></i>
+
+                                </div>
+
+                                <span>
+                                    {{ i.donationname }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- DONATION DATE -->
+
+                        <td>
+
+                            <div class="volunteer-date">
+
+                                <i class="far fa-calendar-alt"></i>
+
+                                <span>
+                                    {{ i.donationdate }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span class="volunteer-status delivered">
+
+                                <i class="fas fa-check-circle"></i>
+
+                                {{ i.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a
+                                href="{% url 'donationrec_detail' i.id %}"
+                                class="volunteer-action-btn"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                View Details
+
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            class="volunteer-empty"
+                        >
+
+                            <i class="fas fa-truck"></i>
+
+                            <h5>
+                                No Delivered Donations Found
+                            </h5>
+
+                            <p>
+                                There are currently no donations that
+                                have been successfully delivered.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

@@ -1,0 +1,360 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="container mt-5 vh-100 table-responsive">
+
+    <h3>Accepted Donation Detail</h3>
+    <hr>
+
+
+    <form method="post">
+        {% csrf_token %}
+
+        <table id="mytable" class="table data">
+
+            <tbody>
+
+
+                <!-- Donor Details -->
+
+                <tr class="align-middle text-center">
+                    <th colspan="4">
+                        <h3>Donor Details</h3>
+                    </th>
+                </tr>
+
+
+                <tr class="align-middle text-center">
+
+                    <td><h5>Donor Name</h5></td>
+
+                    <td>
+                        <h5 class="text-secondary">
+                            {{donation.donor.user.first_name}}
+                            {{donation.donor.user.last_name}}
+                        </h5>
+                    </td>
+
+
+                    <td><h5>Contact</h5></td>
+
+                    <td>
+                        <h5 class="text-secondary">
+                            {{donation.donor.contact}}
+                        </h5>
+                    </td>
+
+                </tr>
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td><h5>Email</h5></td>
+
+                    <td>
+                        <h5 class="text-secondary">
+                            {{donation.donor.user.email}}
+                        </h5>
+                    </td>
+
+
+                    <td><h5>Donor Picture</h5></td>
+
+                    <td>
+
+                        {% if donation.donor.userpic %}
+
+                        <img src="{{donation.donor.userpic.url}}"
+                             width="80"
+                             height="80"
+                             class="rounded">
+
+                        {% endif %}
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+                <!-- Donation Details -->
+
+
+                <tr class="align-middle text-center">
+
+                    <th colspan="4">
+                        <h3>Donation Details</h3>
+                    </th>
+
+                </tr>
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td><h5>Donation Name</h5></td>
+
+
+                    <td>
+                        <h5 class="text-secondary">
+                            {{donation.donationname}}
+                        </h5>
+                    </td>
+
+
+                    <td><h5>Donation Picture</h5></td>
+
+
+                    <td>
+
+                        {% if donation.donationpic %}
+
+                        <img src="{{donation.donationpic.url}}"
+                             width="80"
+                             height="80"
+                             class="rounded">
+
+                        {% endif %}
+
+                    </td>
+
+
+                </tr>
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td><h5>Collection Location</h5></td>
+
+
+                    <td>
+                        <h5 class="text-secondary">
+                            {{donation.collectionloc}}
+                        </h5>
+                    </td>
+
+
+
+                    <td><h5>Donation Date</h5></td>
+
+
+                    <td>
+                        <h5 class="text-secondary">
+                            {{donation.donationdate}}
+                        </h5>
+                    </td>
+
+
+                </tr>
+
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td><h5>Status</h5></td>
+
+
+                    <td>
+
+                        <span class="bg-success text-light px-5 py-2 rounded-pill">
+                            {{donation.status}}
+                        </span>
+
+                    </td>
+
+
+
+                    <td><h5>Update Date</h5></td>
+
+
+                    <td>
+                        <h5 class="text-secondary">
+                            {{donation.updationdate}}
+                        </h5>
+                    </td>
+
+
+                </tr>
+
+
+
+
+                <!-- Assign Volunteer -->
+
+
+                <tr class="align-middle text-center">
+
+                    <th colspan="4">
+                        <h3>Assign Volunteer</h3>
+                    </th>
+
+                </tr>
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td>
+                        <h5>Donation Area</h5>
+                    </td>
+
+
+                    <td colspan="3">
+
+
+                        <select name="donationareaid"
+                                class="form-control"
+                                required>
+
+
+                            <option value="">
+                                Select Donation Area
+                            </option>
+
+
+                            {% for area in donationarea %}
+
+
+                            <option value="{{area.id}}"
+                            {% if donation.donationarea.id == area.id %}
+                                selected
+                            {% endif %}
+                            >
+
+                                {{area.areaname}}
+
+                            </option>
+
+
+                            {% endfor %}
+
+
+                        </select>
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td>
+                        <h5>Volunteer</h5>
+                    </td>
+
+
+                    <td colspan="3">
+
+
+                        <select name="volunteerid"
+                                class="form-control"
+                                required>
+
+
+                            <option value="">
+                                Select Volunteer
+                            </option>
+
+
+                            {% for v in volunteer %}
+
+
+                            <option value="{{v.id}}"
+                            {% if donation.volunteer.id == v.id %}
+                                selected
+                            {% endif %}
+                            >
+
+                                {{v.user.first_name}}
+                                {{v.user.last_name}}
+
+                            </option>
+
+
+                            {% endfor %}
+
+
+                        </select>
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td>
+                        <h5>Admin Remark</h5>
+                    </td>
+
+
+                    <td colspan="3">
+
+
+                        <textarea name="adminremark"
+                                  class="form-control"
+                                  rows="3"
+                                  required>{{donation.adminremark}}</textarea>
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+
+                <tr class="align-middle text-center">
+
+
+                    <td colspan="4">
+
+
+                        <input type="submit"
+                               class="btn btn-primary px-5"
+                               value="Allocate Volunteer">
+
+
+                    </td>
+
+
+                </tr>
+
+
+
+            </tbody>
+
+
+        </table>
+
+
+    </form>
+
+
+</div>
+
+
+{% endblock main %}

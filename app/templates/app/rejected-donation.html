@@ -1,0 +1,217 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h1 class="admin-page-title">
+                Rejected Donations
+            </h1>
+
+            <p class="admin-page-subtitle">
+                Review donations that have been rejected by the administrator.
+            </p>
+
+        </div>
+
+
+        <div class="admin-page-icon rejected-page-icon">
+
+            <i class="fas fa-times-circle"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT CARD
+    ====================================================== -->
+
+    <div class="admin-content-card">
+
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="admin-content-card-header">
+
+            <div>
+
+                <h3>
+                    Rejected Donation List
+                </h3>
+
+                <p>
+                    Donations that were not approved for processing.
+                </p>
+
+            </div>
+
+
+            <div class="admin-header-icon rejected-header-icon">
+
+                <i class="fas fa-times-circle"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="admin-table-wrapper">
+
+            <table id="mytable"
+                   class="table admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th scope="col">
+                            #
+                        </th>
+
+                        <th scope="col">
+                            Donation Name
+                        </th>
+
+                        <th scope="col">
+                            Donation Date
+                        </th>
+
+                        <th scope="col">
+                            Status
+                        </th>
+
+                        <th scope="col">
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+                    {% for i in donation %}
+
+                    <tr>
+
+                        <!-- NUMBER -->
+
+                        <td>
+                            {{ forloop.counter }}
+                        </td>
+
+
+                        <!-- DONATION NAME -->
+
+                        <td>
+
+                            <strong>
+                                {{ i.donationname }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- DONATION DATE -->
+
+                        <td>
+
+                            <span>
+
+                                <i class="fas fa-calendar-alt me-1"
+                                   style="color:#1abc9c;"></i>
+
+                                {{ i.donationdate }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span class="admin-status rejected">
+
+                                {{ i.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a href="{% url 'view_donationdetail' i.id %}"
+                               class="admin-action-btn">
+
+                                <i class="fas fa-eye"></i>
+
+                                View Details
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% empty %}
+
+                    <!-- =====================================
+                         NO RECORDS
+                    ====================================== -->
+
+                    <tr>
+
+                        <td colspan="5"
+                            class="admin-empty">
+
+                            <i class="fas fa-times-circle"></i>
+
+                            <h5>
+                                No Rejected Donations
+                            </h5>
+
+                            <p>
+                                There are currently no rejected donations.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

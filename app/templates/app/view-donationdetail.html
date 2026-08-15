@@ -1,0 +1,579 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h1 class="admin-page-title">
+                View Donation Detail
+            </h1>
+
+            <p class="admin-page-subtitle">
+                Review donor information, donation details, and administration status.
+            </p>
+
+        </div>
+
+
+        <div class="admin-page-icon">
+
+            <i class="fas fa-hand-holding-heart"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DONOR DETAILS CARD
+    ====================================================== -->
+
+    <div class="admin-detail-card">
+
+        <div class="admin-detail-card-header">
+
+            <div class="admin-detail-title">
+
+                <div class="admin-detail-icon donor-detail-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+
+                <div>
+
+                    <h3>
+                        Donor Details
+                    </h3>
+
+                    <p>
+                        Information about the person who submitted this donation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-detail-body">
+
+            <div class="admin-detail-grid">
+
+
+                <!-- DONOR NAME -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-user me-2"></i>
+                        Donor Name
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ donation.donor.user.first_name }}
+                        {{ donation.donor.user.last_name }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-phone me-2"></i>
+                        Contact
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ donation.donor.contact }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-envelope me-2"></i>
+                        Email
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ donation.donor.user.email }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- DONOR PICTURE -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-image me-2"></i>
+                        Donor Picture
+                    </span>
+
+                    <div class="admin-detail-image">
+
+                        {% if donation.donor.userpic %}
+
+                            <img src="{{ donation.donor.userpic.url }}"
+                                 alt="Donor Picture">
+
+                        {% else %}
+
+                            <div class="admin-no-image">
+
+                                <i class="fas fa-user"></i>
+
+                                <span>
+                                    No Image
+                                </span>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         DONATION DETAILS CARD
+    ====================================================== -->
+
+    <div class="admin-detail-card">
+
+        <div class="admin-detail-card-header">
+
+            <div class="admin-detail-title">
+
+                <div class="admin-detail-icon donation-detail-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+
+                <div>
+
+                    <h3>
+                        Donation Details
+                    </h3>
+
+                    <p>
+                        Information about the submitted donation.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-detail-body">
+
+            <div class="admin-detail-grid">
+
+
+                <!-- DONATION NAME -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-gift me-2"></i>
+                        Donation Name
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ donation.donationname }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- DONATION PICTURE -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-image me-2"></i>
+                        Donation Picture
+                    </span>
+
+                    <div class="admin-detail-image">
+
+                        {% if donation.donationpic %}
+
+                            <img src="{{ donation.donationpic.url }}"
+                                 alt="Donation Picture">
+
+                        {% else %}
+
+                            <div class="admin-no-image">
+
+                                <i class="fas fa-image"></i>
+
+                                <span>
+                                    No Image
+                                </span>
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- COLLECTION LOCATION -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Collection Location
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ donation.collectionloc }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- DONATION DATE -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Donation Date
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ donation.donationdate }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="admin-detail-item admin-detail-full">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-align-left me-2"></i>
+                        Description
+                    </span>
+
+                    <div class="admin-description">
+
+                        {{ donation.description }}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PENDING DONATION - ADMIN UPDATE
+    ====================================================== -->
+
+    {% if donation.status == "Pending" %}
+
+    <div class="admin-detail-card admin-update-card">
+
+        <div class="admin-detail-card-header">
+
+            <div class="admin-detail-title">
+
+                <div class="admin-detail-icon update-detail-icon">
+                    <i class="fas fa-edit"></i>
+                </div>
+
+                <div>
+
+                    <h3>
+                        Administrator Review
+                    </h3>
+
+                    <p>
+                        Accept or reject this donation request.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-detail-body">
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+
+                <!-- STATUS -->
+
+                <div class="admin-form-group">
+
+                    <label for="status">
+
+                        <i class="fas fa-tasks me-2"></i>
+
+                        Status
+
+                    </label>
+
+
+                    <select name="status"
+                            id="status"
+                            class="form-select admin-form-control"
+                            required>
+
+                        <option value="">
+                            Select Status
+                        </option>
+
+                        <option value="accept">
+                            Accept
+                        </option>
+
+                        <option value="reject">
+                            Reject
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- ADMIN REMARK -->
+
+                <div class="admin-form-group">
+
+                    <label for="adminremark">
+
+                        <i class="fas fa-comment-alt me-2"></i>
+
+                        Admin Remark
+
+                    </label>
+
+
+                    <textarea name="adminremark"
+                              id="adminremark"
+                              class="form-control admin-form-control"
+                              rows="4"
+                              placeholder="Enter your remark..."
+                              required></textarea>
+
+                </div>
+
+
+                <!-- UPDATE BUTTON -->
+
+                <div class="admin-form-actions">
+
+                    <button type="submit"
+                            class="admin-update-btn">
+
+                        <i class="fas fa-save me-2"></i>
+
+                        Update Donation
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    {% else %}
+
+
+    <!-- =====================================================
+         ALREADY UPDATED DONATION
+    ====================================================== -->
+
+    <div class="admin-detail-card">
+
+        <div class="admin-detail-card-header">
+
+            <div class="admin-detail-title">
+
+                <div class="admin-detail-icon status-detail-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+
+                <div>
+
+                    <h3>
+                        Donation Status
+                    </h3>
+
+                    <p>
+                        Current status and administrator information.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="admin-detail-body">
+
+            <div class="admin-detail-grid">
+
+
+                <!-- STATUS -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-tasks me-2"></i>
+                        Status
+                    </span>
+
+                    <div>
+
+                        {% if donation.status == "Accepted" %}
+
+                            <span class="admin-status accepted">
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Reject" %}
+
+                            <span class="admin-status rejected">
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Volunteer Allocated" %}
+
+                            <span class="admin-status allocated">
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Donation Received" %}
+
+                            <span class="admin-status received">
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Donation Delivered Successfully" %}
+
+                            <span class="admin-status delivered">
+                                {{ donation.status }}
+                            </span>
+
+                        {% else %}
+
+                            <span class="admin-status pending">
+                                {{ donation.status }}
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPDATION DATE -->
+
+                <div class="admin-detail-item">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-calendar-check me-2"></i>
+                        Updation Date
+                    </span>
+
+                    <span class="admin-detail-value">
+
+                        {{ donation.updationdate }}
+
+                    </span>
+
+                </div>
+
+
+                <!-- ADMIN REMARK -->
+
+                <div class="admin-detail-item admin-detail-full">
+
+                    <span class="admin-detail-label">
+                        <i class="fas fa-comment-alt me-2"></i>
+                        Admin Remark
+                    </span>
+
+                    <div class="admin-description">
+
+                        {{ donation.adminremark }}
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endif %}
+
+
+</div>
+
+{% endblock main %}

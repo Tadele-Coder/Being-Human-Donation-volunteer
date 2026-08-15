@@ -1,0 +1,254 @@
+{% extends 'app/base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="donor-dashboard">
+
+    <!-- =====================================================
+         CHANGE PASSWORD HEADER
+    ====================================================== -->
+
+    <section class="donor-page-header">
+
+        <div class="donor-page-header-content">
+
+            <div class="donor-page-icon">
+                <i class="fas fa-key"></i>
+            </div>
+
+            <div>
+                <span class="donor-small-title">
+                   Being Human DONOR PORTAL
+                </span>
+
+                <h1>
+                    Change Password
+                </h1>
+
+                <p>
+                    Keep your donor account secure by updating your password.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CHANGE PASSWORD CARD
+    ====================================================== -->
+
+    <section class="donor-password-section">
+
+        <div class="donor-password-card">
+
+            <!-- CARD HEADER -->
+
+            <div class="donor-password-header">
+
+                <div class="password-header-icon">
+                    <i class="fas fa-lock"></i>
+                </div>
+
+                <div>
+                    <h2>
+                        Update Your Password
+                    </h2>
+
+                    <p>
+                        Enter your current password and choose a new password.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MESSAGES
+            ================================================== -->
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="donor-alert donor-alert-{{ message.tags }}">
+
+                        {% if message.tags == 'success' %}
+                            <i class="fas fa-check-circle"></i>
+                        {% else %}
+                            <i class="fas fa-exclamation-circle"></i>
+                        {% endif %}
+
+                        <span>
+                            {{ message }}
+                        </span>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 FORM ERRORS
+            ================================================== -->
+
+            {% if form.non_field_errors %}
+
+                <div class="donor-alert donor-alert-error">
+
+                    <i class="fas fa-exclamation-circle"></i>
+
+                    <div>
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 PASSWORD FORM
+            ================================================== -->
+
+            <form method="POST" class="donor-password-form">
+
+                {% csrf_token %}
+
+
+                {% for fm in form %}
+
+                    <div class="donor-password-field">
+
+                        <label for="{{ fm.id_for_label }}">
+                            {{ fm.label }}
+                        </label>
+
+
+                        <div class="password-input-wrapper">
+
+                            {{ fm }}
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                onclick="toggleDonorPassword('{{ fm.id_for_label }}', this)"
+                                aria-label="Show password">
+
+                                <i class="fas fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        {% if fm.help_text %}
+
+                            <div class="password-help">
+                                {{ fm.help_text|safe }}
+                            </div>
+
+                        {% endif %}
+
+
+                        {% if fm.errors %}
+
+                            <div class="password-error">
+
+                                <i class="fas fa-exclamation-circle"></i>
+
+                                {{ fm.errors|striptags }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+
+                <!-- =================================================
+                     BUTTONS
+                ================================================== -->
+
+                <div class="donor-password-actions">
+
+                    <a
+                        href="{% url 'index_donor' %}"
+                        class="password-cancel-button">
+
+                        <i class="fas fa-arrow-left me-2"></i>
+
+                        Back to Dashboard
+
+                    </a>
+
+
+                    <button
+                        type="submit"
+                        class="password-submit-button">
+
+                        <i class="fas fa-key me-2"></i>
+
+                        Change Password
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+<!-- =========================================================
+     PASSWORD SHOW / HIDE
+========================================================= -->
+
+<script>
+
+function toggleDonorPassword(fieldId, button) {
+
+    const field = document.getElementById(fieldId);
+
+    if (!field) {
+        return;
+    }
+
+    const icon = button.querySelector("i");
+
+    if (field.type === "password") {
+
+        field.type = "text";
+
+        icon.classList.remove("fa-eye");
+        icon.classList.add("fa-eye-slash");
+
+        button.setAttribute("aria-label", "Hide password");
+
+    } else {
+
+        field.type = "password";
+
+        icon.classList.remove("fa-eye-slash");
+        icon.classList.add("fa-eye");
+
+        button.setAttribute("aria-label", "Show password");
+    }
+
+}
+
+</script>
+
+{% endblock main %}

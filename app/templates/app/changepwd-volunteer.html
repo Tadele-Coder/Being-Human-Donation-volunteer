@@ -1,0 +1,271 @@
+{% extends 'app/base-db-volunteer.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="volunteer-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="volunteer-page-header">
+
+        <div>
+
+            <h1 class="volunteer-page-title">
+                Change Password
+            </h1>
+
+            <p class="volunteer-page-subtitle">
+                Update your account password to keep your volunteer
+                account secure.
+            </p>
+
+        </div>
+
+
+        <div class="volunteer-page-icon">
+
+            <i class="fas fa-key"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PASSWORD CARD
+    ====================================================== -->
+
+    <div class="volunteer-password-card">
+
+
+        <!-- CARD HEADER -->
+
+        <div class="volunteer-password-header">
+
+            <div class="volunteer-password-header-icon">
+
+                <i class="fas fa-lock"></i>
+
+            </div>
+
+            <div>
+
+                <h3>
+                    Update Your Password
+                </h3>
+
+                <p>
+                    Enter your current password and choose a new password.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="volunteer-password-body">
+
+
+            <!-- =================================================
+                 SUCCESS / ERROR MESSAGES
+            ================================================== -->
+
+            {% if messages %}
+
+                <div class="volunteer-password-messages">
+
+                    {% for message in messages %}
+
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+
+                            {% if message.tags == 'success' %}
+
+                                <i class="fas fa-check-circle me-2"></i>
+
+                            {% else %}
+
+                                <i class="fas fa-exclamation-circle me-2"></i>
+
+                            {% endif %}
+
+                            {{ message }}
+
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert"
+                                aria-label="Close"
+                            ></button>
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 NON-FIELD ERRORS
+            ================================================== -->
+
+            {% if form.non_field_errors %}
+
+                <div class="alert alert-danger volunteer-password-error">
+
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+
+                    {% for error in form.non_field_errors %}
+
+                        <div>
+                            {{ error }}
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 PASSWORD FORM
+            ================================================== -->
+
+            <form
+                method="POST"
+                novalidate
+            >
+
+                {% csrf_token %}
+
+
+                {% for fm in form %}
+
+                    <div class="volunteer-password-field">
+
+
+                        <!-- LABEL -->
+
+                        <label
+                            for="{{ fm.id_for_label }}"
+                            class="volunteer-password-label"
+                        >
+
+                            <i class="fas fa-key"></i>
+
+                            {{ fm.label }}
+
+                        </label>
+
+
+                        <!-- FIELD -->
+
+                        <div class="volunteer-password-input">
+
+                            {{ fm }}
+
+                        </div>
+
+
+                        <!-- HELP TEXT -->
+
+                        {% if fm.help_text %}
+
+                            <div class="volunteer-password-help">
+
+                                <i class="fas fa-info-circle"></i>
+
+                                <span>
+                                    {{ fm.help_text|safe }}
+                                </span>
+
+                            </div>
+
+                        {% endif %}
+
+
+                        <!-- FIELD ERRORS -->
+
+                        {% if fm.errors %}
+
+                            <div class="volunteer-password-field-error">
+
+                                <i class="fas fa-exclamation-circle"></i>
+
+                                {{ fm.errors|striptags }}
+
+                            </div>
+
+                        {% endif %}
+
+
+                    </div>
+
+                {% endfor %}
+
+
+                <!-- =================================================
+                     SUBMIT
+                ================================================== -->
+
+                <div class="volunteer-password-actions">
+
+                    <button
+                        type="submit"
+                        class="volunteer-password-btn"
+                    >
+
+                        <i class="fas fa-save"></i>
+
+                        Change Password
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+            <!-- =================================================
+                 SECURITY INFORMATION
+            ================================================== -->
+
+            <div class="volunteer-password-security">
+
+                <div class="volunteer-password-security-icon">
+
+                    <i class="fas fa-shield-alt"></i>
+
+                </div>
+
+                <div>
+
+                    <h4>
+                        Keep Your Account Secure
+                    </h4>
+
+                    <p>
+                        Use a strong password that is difficult for others
+                        to guess. Avoid using your name, email address,
+                        or commonly used passwords.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

@@ -1,0 +1,211 @@
+{% extends 'app/base-db-admin.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="admin-page">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="admin-page-header">
+
+        <div>
+
+            <h1 class="admin-page-title">
+                Add Donation Area
+            </h1>
+
+            <p class="admin-page-subtitle">
+                Create a new donation area for organizing and managing donations.
+            </p>
+
+        </div>
+
+        <div class="admin-page-icon area-page-icon">
+
+            <i class="fas fa-map-marker-alt"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MESSAGES
+    ====================================================== -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="admin-message
+                {% if message.tags == 'error' %}
+                    admin-message-error
+                {% endif %}">
+
+                {% if message.tags == 'error' %}
+
+                    <i class="fas fa-exclamation-circle"></i>
+
+                {% else %}
+
+                    <i class="fas fa-check-circle"></i>
+
+                {% endif %}
+
+                <span>
+                    {{ message }}
+                </span>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         ADD AREA FORM CARD
+    ====================================================== -->
+
+    <div class="admin-detail-card">
+
+        <!-- =================================================
+             CARD HEADER
+        ================================================== -->
+
+        <div class="admin-detail-card-header">
+
+            <div class="admin-detail-title">
+
+                <div class="admin-detail-icon area-detail-icon">
+
+                    <i class="fas fa-map-marked-alt"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        Donation Area Information
+                    </h3>
+
+                    <p>
+                        Enter the information required to create a new donation area.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FORM BODY
+        ================================================== -->
+
+        <div class="admin-detail-body">
+
+            <form action=""
+                  method="POST"
+                  enctype="multipart/form-data"
+                  novalidate>
+
+                {% csrf_token %}
+
+
+                <!-- =========================================
+                     NON-FIELD ERRORS
+                ========================================== -->
+
+                {% if form.non_field_errors %}
+
+                    <div class="admin-form-error">
+
+                        <i class="fas fa-exclamation-circle"></i>
+
+                        <div>
+
+                            {% for error in form.non_field_errors %}
+
+                                <p>
+                                    {{ error }}
+                                </p>
+
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+
+                {% endif %}
+
+
+                <!-- =========================================
+                     FORM FIELDS
+                ========================================== -->
+
+                {% for fm in form %}
+
+                    <div class="admin-form-group">
+
+                        {{ fm.label_tag }}
+
+                        {{ fm }}
+
+                        {% if fm.errors %}
+
+                            <div class="admin-field-error">
+
+                                <i class="fas fa-exclamation-circle"></i>
+
+                                {{ fm.errors|striptags }}
+
+                            </div>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+
+                <!-- =========================================
+                     FORM ACTIONS
+                ========================================== -->
+
+                <div class="admin-form-actions">
+
+                    <a href="{% url 'manage_area' %}"
+                       class="admin-back-btn">
+
+                        <i class="fas fa-arrow-left"></i>
+
+                        Back
+
+                    </a>
+
+
+                    <button type="submit"
+                            class="admin-update-btn">
+
+                        <i class="fas fa-plus-circle"></i>
+
+                        Add Donation Area
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

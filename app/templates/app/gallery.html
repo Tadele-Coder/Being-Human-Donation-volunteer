@@ -1,0 +1,294 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block main %}
+
+<section class="donsvol-gallery-page">
+
+    <div class="container">
+
+        <!-- =================================================
+             PAGE HEADER
+        ================================================== -->
+
+        <div class="gallery-page-header">
+
+            <div class="gallery-page-label">
+
+                <i class="fa-solid fa-images me-1"></i>
+
+               Being Human GALLERY
+
+            </div>
+
+            <h1>
+                Donation <span>Gallery</span>
+            </h1>
+
+            <p>
+                Explore donations successfully delivered through
+                the Being Human donation and volunteer platform.
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             GALLERY TABLE
+        ================================================== -->
+
+        <div class="gallery-table-card">
+
+            <div class="gallery-table-wrapper">
+
+                <table id="mytable"
+                       class="tableBeing Human-gallery-table align-middle">
+
+                    <thead>
+
+                        <tr class="text-center">
+
+                            <th scope="col">
+                                #
+                            </th>
+
+                            <th scope="col">
+                                Category
+                            </th>
+
+                            <th scope="col">
+                                Donor Details
+                            </th>
+
+                            <th scope="col">
+                                Volunteer Details
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for i in gallery %}
+
+                        <tr class="text-center">
+
+                            <!-- =================================================
+                                 NUMBER
+                            ================================================== -->
+
+                            <th scope="row"
+                                class="gallery-number">
+
+                                {{ forloop.counter }}
+
+                            </th>
+
+
+                            <!-- =================================================
+                                 DONATION DETAILS
+                            ================================================== -->
+
+                            <td>
+
+                                <div class="gallery-donation-title">
+
+                                    {{ i.donation.donationname }}
+
+                                </div>
+
+
+                                {% if i.deliverypic %}
+
+                                <img src="{{ i.deliverypic.url }}"
+                                     class="gallery-delivery-image"
+                                     alt="Donation delivery image">
+
+                                {% endif %}
+
+
+                                <div class="gallery-info">
+
+                                    <strong>
+
+                                        <i class="fa-solid fa-location-dot me-1"></i>
+
+                                        Donation Area:
+
+                                    </strong>
+
+                                    {{ i.donation.donationarea.areaname }}
+
+                                </div>
+
+
+                                <div class="gallery-info">
+
+                                    <strong>
+
+                                        <i class="fa-regular fa-calendar me-1"></i>
+
+                                        Donation Date:
+
+                                    </strong>
+
+                                    {{ i.donation.donationdate }}
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- =================================================
+                                 DONOR DETAILS
+                            ================================================== -->
+
+                            <td>
+
+                                {% if i.donation.donor.userpic %}
+
+                                <img src="{{ i.donation.donor.userpic.url }}"
+                                     class="gallery-profile-image"
+                                     alt="Donor profile">
+
+                                {% else %}
+
+                                <div class="gallery-profile-placeholder">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                </div>
+
+                                {% endif %}
+
+
+                                <div class="gallery-person-name">
+
+                                    {{ i.donation.donor.user.first_name }}
+
+                                    {{ i.donation.donor.user.last_name }}
+
+                                </div>
+
+
+                                <div class="gallery-person-info">
+
+                                    <i class="fa-solid fa-envelope"></i>
+
+                                    {{ i.donation.donor.user.email }}
+
+                                </div>
+
+
+                                <div class="gallery-person-info">
+
+                                    <i class="fa-solid fa-phone"></i>
+
+                                    {{ i.donation.donor.contact }}
+
+                                </div>
+
+                            </td>
+
+
+                            <!-- =================================================
+                                 VOLUNTEER DETAILS
+                            ================================================== -->
+
+                            <td>
+
+                                {% if i.donation.volunteer.userpic %}
+
+                                <img src="{{ i.donation.volunteer.userpic.url }}"
+                                     class="gallery-profile-image"
+                                     alt="Volunteer profile">
+
+                                {% else %}
+
+                                <div class="gallery-profile-placeholder">
+
+                                    <i class="fa-solid fa-user-check"></i>
+
+                                </div>
+
+                                {% endif %}
+
+
+                                <div class="gallery-person-name">
+
+                                    {{ i.donation.volunteer.user.first_name }}
+
+                                    {{ i.donation.volunteer.user.last_name }}
+
+                                </div>
+
+
+                                <div class="gallery-person-info">
+
+                                    <i class="fa-solid fa-envelope"></i>
+
+                                    {{ i.donation.volunteer.user.email }}
+
+                                </div>
+
+
+                                <div class="gallery-person-info">
+
+                                    <i class="fa-solid fa-phone"></i>
+
+                                    {{ i.donation.volunteer.contact }}
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                        {% empty %}
+
+                        <!-- =================================================
+                             EMPTY STATE
+                        ================================================== -->
+
+                        <tr>
+
+                            <td colspan="4"
+                                class="gallery-empty">
+
+                                <div class="gallery-empty-icon">
+
+                                    <i class="fa-solid fa-images"></i>
+
+                                </div>
+
+                                <h4>
+                                    No Gallery Records Found
+                                </h4>
+
+                                <p>
+                                    Successfully delivered donations
+                                    will appear here.
+                                </p>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock main %}

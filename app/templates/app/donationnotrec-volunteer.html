@@ -1,0 +1,242 @@
+{% extends 'app/base-db-volunteer.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="volunteer-page">
+
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <div class="volunteer-page-header">
+
+        <div>
+
+            <h1 class="volunteer-page-title">
+                Donation Not Received
+            </h1>
+
+            <p class="volunteer-page-subtitle">
+                View donation collection requests that were not received.
+            </p>
+
+        </div>
+
+
+        <div class="volunteer-page-icon">
+
+            <i class="fas fa-ban"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENT CARD
+    ====================================================== -->
+
+    <div class="volunteer-content-card">
+
+
+        <!-- CARD HEADER -->
+
+        <div class="volunteer-content-card-header">
+
+            <div>
+
+                <h3>
+                    Donations Not Received
+                </h3>
+
+                <p>
+                    Donations that could not be collected successfully
+                </p>
+
+            </div>
+
+
+            <div class="volunteer-header-icon not-received">
+
+                <i class="fas fa-times-circle"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TABLE
+        ================================================== -->
+
+        <div class="volunteer-table-wrapper">
+
+            <table
+                id="mytable"
+                class="volunteer-table data"
+            >
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            #
+                        </th>
+
+                        <th>
+                            Donation Name
+                        </th>
+
+                        <th>
+                            Donation Date
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Action
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody>
+
+
+                    {% for i in donation %}
+
+                    <tr>
+
+
+                        <!-- NUMBER -->
+
+                        <td>
+
+                            <strong>
+                                {{ forloop.counter }}
+                            </strong>
+
+                        </td>
+
+
+                        <!-- DONATION NAME -->
+
+                        <td>
+
+                            <div class="volunteer-donation-name">
+
+                                <div class="volunteer-donation-icon not-received">
+
+                                    <i class="fas fa-gift"></i>
+
+                                </div>
+
+                                <span>
+                                    {{ i.donationname }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- DONATION DATE -->
+
+                        <td>
+
+                            <div class="volunteer-date">
+
+                                <i class="far fa-calendar-alt"></i>
+
+                                <span>
+                                    {{ i.donationdate }}
+                                </span>
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span class="volunteer-status not-received">
+
+                                <i class="fas fa-times-circle"></i>
+
+                                {{ i.status }}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTION -->
+
+                        <td>
+
+                            <a
+                                href="{% url 'donationnotrec_detail' i.id %}"
+                                class="volunteer-action-btn"
+                            >
+
+                                <i class="fas fa-eye"></i>
+
+                                View Details
+
+                            </a>
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% empty %}
+
+
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            class="volunteer-empty"
+                        >
+
+                            <i class="fas fa-inbox"></i>
+
+                            <h5>
+                                No Donation Not Received Found
+                            </h5>
+
+                            <p>
+                                There are currently no unsuccessful
+                                donation collection requests.
+                            </p>
+
+                        </td>
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock main %}

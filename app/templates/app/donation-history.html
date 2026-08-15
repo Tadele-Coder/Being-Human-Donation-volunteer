@@ -1,0 +1,364 @@
+{% extends 'app/base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="donor-dashboard">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="donor-page-header">
+
+        <div class="donor-page-header-content">
+
+            <div class="donor-page-icon">
+                <i class="fas fa-history"></i>
+            </div>
+
+            <div>
+
+                <span class="donor-small-title">
+                   Being Human DONOR PORTAL
+                </span>
+
+                <h1>
+                    Donation History
+                </h1>
+
+                <p>
+                    View and track all the donations you have submitted.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DONATION HISTORY
+    ====================================================== -->
+
+    <section class="donor-history-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    YOUR DONATIONS
+                </span>
+
+                <h2>
+                    Donation History
+                </h2>
+
+                <p>
+                    Review the status and details of your donations.
+                </p>
+
+            </div>
+
+            <i class="fas fa-list-alt"></i>
+
+        </div>
+
+
+        <!-- =================================================
+             HISTORY CARD
+        ================================================== -->
+
+        <div class="donor-history-card">
+
+            <!-- CARD HEADER -->
+
+            <div class="donor-history-card-header">
+
+                <div class="history-header-icon">
+
+                    <i class="fas fa-hand-holding-heart"></i>
+
+                </div>
+
+                <div>
+
+                    <h3>
+                        My Donations
+                    </h3>
+
+                    <p>
+                        All donations submitted throughBeing Human.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 TABLE
+            ================================================== -->
+
+            <div class="donor-table-wrapper">
+
+                <table id="mytable"
+                       class="donor-history-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Donation Name
+                            </th>
+
+                            <th>
+                                Donation Date
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        {% for i in donation %}
+
+                        <tr>
+
+                            <td class="donation-number">
+                                {{ forloop.counter }}
+                            </td>
+
+
+                            <td>
+
+                                <div class="donation-name">
+
+                                    <div class="donation-name-icon">
+
+                                        <i class="fas fa-gift"></i>
+
+                                    </div>
+
+                                    <span>
+                                        {{ i.donationname }}
+                                    </span>
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="donation-date">
+
+                                    <i class="far fa-calendar-alt"></i>
+
+                                    {{ i.donationdate }}
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                {% if i.status == "Pending" %}
+
+                                    <span class="donor-status-badge pending">
+
+                                        <i class="fas fa-clock"></i>
+
+                                        Pending
+
+                                    </span>
+
+
+                                {% elif i.status == "Accepted" %}
+
+                                    <span class="donor-status-badge accepted">
+
+                                        <i class="fas fa-check-circle"></i>
+
+                                        Accepted
+
+                                    </span>
+
+
+                                {% elif i.status == "Rejected" or i.status == "Reject" %}
+
+                                    <span class="donor-status-badge rejected">
+
+                                        <i class="fas fa-times-circle"></i>
+
+                                        Rejected
+
+                                    </span>
+
+
+                                {% elif i.status == "Volunteer Allocated" %}
+
+                                    <span class="donor-status-badge allocated">
+
+                                        <i class="fas fa-user-check"></i>
+
+                                        Volunteer Allocated
+
+                                    </span>
+
+
+                                {% elif i.status == "Donation Received" %}
+
+                                    <span class="donor-status-badge received">
+
+                                        <i class="fas fa-box-open"></i>
+
+                                        Donation Received
+
+                                    </span>
+
+
+                                {% elif i.status == "Donation Delivered Successfully" %}
+
+                                    <span class="donor-status-badge delivered">
+
+                                        <i class="fas fa-hands-helping"></i>
+
+                                        Delivered
+
+                                    </span>
+
+
+                                {% else %}
+
+                                    <span class="donor-status-badge other">
+
+                                        {{ i.status }}
+
+                                    </span>
+
+                                {% endif %}
+
+                            </td>
+
+
+                            <td>
+
+                                <a href="{% url 'donationdetail_donor' i.id %}"
+                                   class="donor-view-button">
+
+                                    <i class="fas fa-eye"></i>
+
+                                    <span>
+                                        View Details
+                                    </span>
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+
+                        {% empty %}
+
+                        <tr>
+
+                            <td colspan="5">
+
+                                <div class="donor-empty-state">
+
+                                    <div class="empty-icon">
+
+                                        <i class="fas fa-box-open"></i>
+
+                                    </div>
+
+                                    <h4>
+                                        No Donation History
+                                    </h4>
+
+                                    <p>
+                                        You have not submitted any donations yet.
+                                    </p>
+
+                                    <a href="{% url 'donate_now' %}"
+                                       class="donor-empty-button">
+
+                                        <i class="fas fa-heart me-2"></i>
+
+                                        Donate Now
+
+                                    </a>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         IMPACT MESSAGE
+    ====================================================== -->
+
+    <section class="donor-impact-card">
+
+        <div class="donor-impact-icon">
+
+            <i class="fas fa-hands-helping"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                YOUR IMPACT
+            </span>
+
+            <h3>
+                Thank you for supporting Being Human.
+            </h3>
+
+            <p>
+                Every donation helps connect resources with people
+                and communities who need them.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock main %}

@@ -1,0 +1,255 @@
+{% extends 'app/base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="donor-dashboard">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="donor-page-header">
+
+        <div class="donor-page-header-content">
+
+            <div class="donor-page-icon">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+
+            <div>
+
+                <span class="donor-small-title">
+                   Being Human DONOR PORTAL
+                </span>
+
+                <h1>
+                    Make a Donation
+                </h1>
+
+                <p>
+                    Your generosity can make a meaningful difference
+                    in someone's life.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DONATION FORM
+    ====================================================== -->
+
+    <section class="donor-form-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    DONATION DETAILS
+                </span>
+
+                <h2>
+                    Submit Your Donation
+                </h2>
+
+                <p>
+                    Please provide the details of the item you would
+                    like to donate.
+                </p>
+
+            </div>
+
+            <i class="fas fa-gift"></i>
+
+        </div>
+
+
+        <!-- =================================================
+             MESSAGES
+        ================================================== -->
+
+        {% if messages %}
+
+            <div class="donor-messages">
+
+                {% for message in messages %}
+
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show">
+
+                        <i class="fas
+                            {% if message.tags == 'success' %}
+                                fa-check-circle
+                            {% elif message.tags == 'error' %}
+                                fa-exclamation-circle
+                            {% else %}
+                                fa-info-circle
+                            {% endif %}
+                            me-2">
+                        </i>
+
+                        {{ message }}
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert">
+                        </button>
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- =================================================
+             DONATION CARD
+        ================================================== -->
+
+        <div class="donor-form-card">
+
+            <div class="donor-form-card-header">
+
+                <div class="form-header-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+
+                <div>
+
+                    <h3>
+                        Donation Information
+                    </h3>
+
+                    <p>
+                        Complete the form below to submit your donation.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <form method="POST"
+                  enctype="multipart/form-data"
+                  novalidate>
+
+                {% csrf_token %}
+
+
+                <!-- =================================================
+                     FORM FIELDS
+                ================================================== -->
+
+                <div class="donor-form-fields">
+
+                    {% for fm in form %}
+
+                        <div class="donor-form-group">
+
+                            {{ fm.label_tag }}
+
+                            {{ fm }}
+
+                            {% if fm.help_text %}
+
+                                <small class="donor-help-text">
+                                    {{ fm.help_text|safe }}
+                                </small>
+
+                            {% endif %}
+
+                            {% if fm.errors %}
+
+                                <div class="donor-field-error">
+
+                                    <i class="fas fa-exclamation-circle"></i>
+
+                                    {{ fm.errors|striptags }}
+
+                                </div>
+
+                            {% endif %}
+
+                        </div>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <!-- =================================================
+                     FORM FOOTER
+                ================================================== -->
+
+                <div class="donor-form-footer">
+
+                    <div class="donor-form-note">
+
+                        <i class="fas fa-info-circle"></i>
+
+                        <span>
+                            Your donation will be reviewed by the
+                           Being Human administration team.
+                        </span>
+
+                    </div>
+
+
+                    <button type="submit"
+                            class="donor-submit-button">
+
+                        <i class="fas fa-heart me-2"></i>
+
+                        Submit Donation
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DONATION MESSAGE
+    ====================================================== -->
+
+    <section class="donor-impact-card">
+
+        <div class="donor-impact-icon">
+
+            <i class="fas fa-hands-helping"></i>
+
+        </div>
+
+        <div>
+
+            <span>
+                MAKE AN IMPACT
+            </span>
+
+            <h3>
+                Every donation matters.
+            </h3>
+
+            <p>
+                Your generosity helps connect valuable resources
+                with people and communities who need them.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock main %}

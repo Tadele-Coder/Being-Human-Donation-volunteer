@@ -1,0 +1,666 @@
+{% extends 'app/base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="donor-dashboard">
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
+
+    <section class="donor-page-header">
+
+        <div class="donor-page-header-content">
+
+            <div class="donor-page-icon">
+                <i class="fas fa-file-invoice"></i>
+            </div>
+
+            <div>
+                <span class="donor-small-title">
+                    DONATION INFORMATION
+                </span>
+
+                <h1>
+                    View Donation Detail
+                </h1>
+
+                <p>
+                    View complete information about your donation.
+                </p>
+            </div>
+
+        </div>
+
+        <a href="{% url 'donation_history' %}"
+           class="donor-back-button">
+
+            <i class="fas fa-arrow-left me-2"></i>
+            Back to History
+
+        </a>
+
+    </section>
+
+
+    <!-- =====================================================
+         DONOR INFORMATION
+    ====================================================== -->
+
+    <section class="donor-detail-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    DONOR INFORMATION
+                </span>
+
+                <h2>
+                    Donor Details
+                </h2>
+
+                <p>
+                    Information associated with this donation.
+                </p>
+
+            </div>
+
+            <i class="fas fa-user"></i>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-profile">
+
+                {% if donation.donor.userpic %}
+
+                    <img
+                        src="{{ donation.donor.userpic.url }}"
+                        alt="Donor Profile">
+
+                {% else %}
+
+                    <img
+                        src="{% static 'images/default.png' %}"
+                        alt="Donor Profile">
+
+                {% endif %}
+
+            </div>
+
+
+            <div class="detail-info-grid">
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-user me-2"></i>
+                        Donor Name
+                    </span>
+
+                    <strong>
+                        {{ donation.donor.user.first_name }}
+                        {{ donation.donor.user.last_name }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-phone me-2"></i>
+                        Contact
+                    </span>
+
+                    <strong>
+                        {{ donation.donor.contact }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-envelope me-2"></i>
+                        Email
+                    </span>
+
+                    <strong>
+                        {{ donation.donor.user.email }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Address
+                    </span>
+
+                    <strong>
+                        {{ donation.donor.address|default_if_none:"Not provided" }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DONATION INFORMATION
+    ====================================================== -->
+
+    <section class="donor-detail-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    DONATION INFORMATION
+                </span>
+
+                <h2>
+                    Donation Details
+                </h2>
+
+                <p>
+                    Complete information about your submitted donation.
+                </p>
+
+            </div>
+
+            <i class="fas fa-hand-holding-heart"></i>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-info-grid">
+
+
+                <!-- DONATION NAME -->
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-gift me-2"></i>
+                        Donation Name
+                    </span>
+
+                    <strong>
+                        {{ donation.donationname }}
+                    </strong>
+
+                </div>
+
+
+                <!-- DONATION DATE -->
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        Donation Date
+                    </span>
+
+                    <strong>
+                        {{ donation.donationdate }}
+                    </strong>
+
+                </div>
+
+
+                <!-- COLLECTION LOCATION -->
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-map-marker-alt me-2"></i>
+                        Collection Location
+                    </span>
+
+                    <strong>
+                        {{ donation.collectionloc }}
+                    </strong>
+
+                </div>
+
+
+                <!-- DONATION AREA -->
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-map me-2"></i>
+                        Donation Area
+                    </span>
+
+                    <strong>
+
+                        {% if donation.donationarea %}
+                            {{ donation.donationarea.areaname }}
+                        {% else %}
+                            Not assigned
+                        {% endif %}
+
+                    </strong>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-info-circle me-2"></i>
+                        Current Status
+                    </span>
+
+                    <strong>
+
+                        {% if donation.status == "Pending" %}
+
+                            <span class="donor-status-badge status-pending">
+                                <i class="fas fa-clock me-1"></i>
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Accepted" %}
+
+                            <span class="donor-status-badge status-accepted">
+                                <i class="fas fa-check-circle me-1"></i>
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Rejected" or donation.status == "Reject" %}
+
+                            <span class="donor-status-badge status-rejected">
+                                <i class="fas fa-times-circle me-1"></i>
+                                Rejected
+                            </span>
+
+                        {% elif donation.status == "Volunteer Allocated" %}
+
+                            <span class="donor-status-badge status-allocated">
+                                <i class="fas fa-user-check me-1"></i>
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Donation Received" %}
+
+                            <span class="donor-status-badge status-received">
+                                <i class="fas fa-box-open me-1"></i>
+                                {{ donation.status }}
+                            </span>
+
+                        {% elif donation.status == "Donation Delivered Successfully" %}
+
+                            <span class="donor-status-badge status-delivered">
+                                <i class="fas fa-hands-helping me-1"></i>
+                                Delivered Successfully
+                            </span>
+
+                        {% else %}
+
+                            <span class="donor-status-badge status-other">
+                                {{ donation.status }}
+                            </span>
+
+                        {% endif %}
+
+                    </strong>
+
+                </div>
+
+
+                <!-- UPDATED DATE -->
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-sync-alt me-2"></i>
+                        Last Updated
+                    </span>
+
+                    <strong>
+                        {{ donation.updationdate|default_if_none:"Not updated" }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- DONATION DESCRIPTION -->
+
+            <div class="detail-full-item">
+
+                <span>
+                    <i class="fas fa-align-left me-2"></i>
+                    Donation Description
+                </span>
+
+                <p>
+                    {{ donation.description|default_if_none:"No description provided." }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         DONATION PICTURE
+    ====================================================== -->
+
+    <section class="donor-detail-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    DONATION PHOTO
+                </span>
+
+                <h2>
+                    Donation Picture
+                </h2>
+
+                <p>
+                    Picture uploaded when the donation was submitted.
+                </p>
+
+            </div>
+
+            <i class="fas fa-image"></i>
+
+        </div>
+
+
+        <div class="detail-image-card">
+
+            {% if donation.donationpic %}
+
+                <img
+                    src="{{ donation.donationpic.url }}"
+                    alt="Donation Picture"
+                    class="donation-detail-image">
+
+            {% else %}
+
+                <div class="no-image">
+
+                    <i class="fas fa-image"></i>
+
+                    <p>
+                        No donation picture available.
+                    </p>
+
+                </div>
+
+            {% endif %}
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ADMIN REMARK
+    ====================================================== -->
+
+    <section class="donor-detail-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    ADMINISTRATION
+                </span>
+
+                <h2>
+                    Admin Remark
+                </h2>
+
+                <p>
+                    Message provided by the Being Human administration.
+                </p>
+
+            </div>
+
+            <i class="fas fa-comment-alt"></i>
+
+        </div>
+
+
+        <div class="remark-card">
+
+            <div class="remark-icon">
+                <i class="fas fa-user-shield"></i>
+            </div>
+
+            <div>
+
+                {% if donation.adminremark %}
+
+                    <p>
+                        {{ donation.adminremark }}
+                    </p>
+
+                {% else %}
+
+                    <p class="empty-remark">
+                        No administrator remark has been provided yet.
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VOLUNTEER INFORMATION
+    ====================================================== -->
+
+    {% if donation.volunteer %}
+
+    <section class="donor-detail-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    VOLUNTEER INFORMATION
+                </span>
+
+                <h2>
+                    Assigned Volunteer
+                </h2>
+
+                <p>
+                    Volunteer assigned to manage this donation.
+                </p>
+
+            </div>
+
+            <i class="fas fa-hands-helping"></i>
+
+        </div>
+
+
+        <div class="detail-card">
+
+            <div class="detail-info-grid">
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-user me-2"></i>
+                        Volunteer Name
+                    </span>
+
+                    <strong>
+
+                        {{ donation.volunteer.user.first_name }}
+                        {{ donation.volunteer.user.last_name }}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-envelope me-2"></i>
+                        Volunteer Email
+                    </span>
+
+                    <strong>
+                        {{ donation.volunteer.user.email }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-phone me-2"></i>
+                        Volunteer Contact
+                    </span>
+
+                    <strong>
+                        {{ donation.volunteer.contact }}
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-item">
+
+                    <span>
+                        <i class="fas fa-user-check me-2"></i>
+                        Volunteer Username
+                    </span>
+
+                    <strong>
+                        {{ donation.volunteer.user.username }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         VOLUNTEER REMARK
+    ====================================================== -->
+
+    {% if donation.volunteerremark %}
+
+    <section class="donor-detail-section">
+
+        <div class="donor-section-title">
+
+            <div>
+
+                <span>
+                    DELIVERY INFORMATION
+                </span>
+
+                <h2>
+                    Volunteer Remark
+                </h2>
+
+                <p>
+                    Information provided by the assigned volunteer.
+                </p>
+
+            </div>
+
+            <i class="fas fa-comment-dots"></i>
+
+        </div>
+
+
+        <div class="remark-card volunteer-remark">
+
+            <div class="remark-icon">
+                <i class="fas fa-hands-helping"></i>
+            </div>
+
+            <div>
+
+                <p>
+                    {{ donation.volunteerremark }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         BACK BUTTON
+    ====================================================== -->
+
+    <div class="donor-detail-actions">
+
+        <a href="{% url 'donation_history' %}"
+           class="donor-secondary-button">
+
+            <i class="fas fa-arrow-left me-2"></i>
+            Back to Donation History
+
+        </a>
+
+        <a href="{% url 'donate_now' %}"
+           class="donor-main-button">
+
+            <i class="fas fa-heart me-2"></i>
+            Donate Again
+
+        </a>
+
+    </div>
+
+
+</div>
+
+{% endblock main %}

@@ -1,0 +1,419 @@
+{% extends 'app/base-db-donor.html' %}
+{% load static %}
+
+{% block main %}
+
+<div class="donor-dashboard">
+
+    <!-- =====================================================
+         PROFILE PAGE HEADER
+    ====================================================== -->
+
+    <section class="donor-page-header">
+
+        <div class="donor-page-header-content">
+
+            <div class="donor-page-icon">
+                <i class="fas fa-user"></i>
+            </div>
+
+            <div>
+
+                <span class="donor-small-title">
+                   Being Human DONOR PORTAL
+                </span>
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    View and update your donor account information.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROFILE CONTENT
+    ====================================================== -->
+
+    <section class="donor-profile-section">
+
+        <div class="donor-profile-card">
+
+
+            <!-- =================================================
+                 PROFILE CARD HEADER
+            ================================================== -->
+
+            <div class="donor-profile-card-header">
+
+                <div>
+
+                    <span class="profile-section-label">
+                        ACCOUNT INFORMATION
+                    </span>
+
+                    <h2>
+                        Personal Information
+                    </h2>
+
+                    <p>
+                        Keep your donor information up to date.
+                    </p>
+
+                </div>
+
+                <div class="profile-header-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 MESSAGES
+            ================================================== -->
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="donor-profile-alert
+                        {% if message.tags == 'success' %}
+                            donor-profile-success
+                        {% else %}
+                            donor-profile-error
+                        {% endif %}">
+
+                        {% if message.tags == 'success' %}
+
+                            <i class="fas fa-check-circle"></i>
+
+                        {% else %}
+
+                            <i class="fas fa-exclamation-circle"></i>
+
+                        {% endif %}
+
+                        <span>
+                            {{ message }}
+                        </span>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 FORM ERRORS
+            ================================================== -->
+
+            {% if form.non_field_errors %}
+
+                {% for error in form.non_field_errors %}
+
+                    <div class="donor-profile-alert donor-profile-error">
+
+                        <i class="fas fa-exclamation-circle"></i>
+
+                        <span>
+                            {{ error }}
+                        </span>
+
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+
+            <!-- =================================================
+                 PROFILE FORM
+            ================================================== -->
+
+            <form
+                action=""
+                method="POST"
+                enctype="multipart/form-data"
+                novalidate>
+
+                {% csrf_token %}
+
+
+                <div class="row g-4">
+
+
+                    <!-- =================================================
+                         FIRST NAME
+                    ================================================== -->
+
+                    <div class="col-lg-6">
+
+                        <div class="donor-profile-field">
+
+                            <label>
+                                First Name
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fas fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    name="firstname"
+                                    placeholder="Enter First Name"
+                                    class="form-control"
+                                    pattern="[A-Za-z]+"
+                                    value="{{ donor.user.first_name }}">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         LAST NAME
+                    ================================================== -->
+
+                    <div class="col-lg-6">
+
+                        <div class="donor-profile-field">
+
+                            <label>
+                                Last Name
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fas fa-user"></i>
+
+                                <input
+                                    type="text"
+                                    name="lastname"
+                                    placeholder="Enter Last Name"
+                                    class="form-control"
+                                    pattern="[A-Za-z]+"
+                                    value="{{ donor.user.last_name }}">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EMAIL
+                    ================================================== -->
+
+                    <div class="col-lg-6">
+
+                        <div class="donor-profile-field">
+
+                            <label>
+                                Email ID
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fas fa-envelope"></i>
+
+                                <input
+                                    type="email"
+                                    name="email"
+                                    readonly
+                                    class="form-control"
+                                    value="{{ donor.user.username }}">
+
+                            </div>
+
+                            <small class="profile-help">
+                                <i class="fas fa-lock me-1"></i>
+                                Email address cannot be changed.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         CONTACT
+                    ================================================== -->
+
+                    <div class="col-lg-6">
+
+                        <div class="donor-profile-field">
+
+                            <label>
+                                Contact
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fas fa-phone"></i>
+
+                                <input
+                                    type="text"
+                                    name="contact"
+                                    placeholder="Contact Number"
+                                    required
+                                    class="form-control"
+                                    value="{{ donor.contact }}">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         PROFILE PICTURE
+                    ================================================== -->
+
+                    <div class="col-lg-7">
+
+                        <div class="donor-profile-field">
+
+                            <label>
+                                Profile Picture
+                            </label>
+
+                            <div class="profile-file-wrapper">
+
+                                <i class="fas fa-camera"></i>
+
+                                <input
+                                    type="file"
+                                    name="userpic"
+                                    class="form-control"
+                                    accept="image/*">
+
+                            </div>
+
+                            <small class="profile-help">
+                                Upload a new picture if you want to change your current profile photo.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         CURRENT PROFILE PICTURE
+                    ================================================== -->
+
+                    <div class="col-lg-5">
+
+                        <div class="profile-picture-area">
+
+                            <span class="profile-picture-label">
+                                CURRENT PHOTO
+                            </span>
+
+                            {% if donor.userpic %}
+
+                                <img
+                                    src="{{ donor.userpic.url }}"
+                                    alt="Donor Profile"
+                                    class="donor-profile-image">
+
+                            {% else %}
+
+                                <img
+                                    src="{% static 'images/default.png' %}"
+                                    alt="Default Profile"
+                                    class="donor-profile-image">
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ADDRESS
+                    ================================================== -->
+
+                    <div class="col-12">
+
+                        <div class="donor-profile-field">
+
+                            <label>
+                                Address
+                            </label>
+
+                            <div class="profile-textarea-wrapper">
+
+                                <i class="fas fa-map-marker-alt"></i>
+
+                                <textarea
+                                    name="address"
+                                    class="form-control"
+                                    placeholder="Full Address">{{ donor.address }}</textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ACTION BUTTONS
+                    ================================================== -->
+
+                    <div class="col-12">
+
+                        <div class="donor-profile-actions">
+
+                            <a
+                                href="{% url 'index_donor' %}"
+                                class="profile-back-button">
+
+                                <i class="fas fa-arrow-left me-2"></i>
+
+                                Back to Dashboard
+
+                            </a>
+
+
+                            <button
+                                type="submit"
+                                class="profile-update-button">
+
+                                <i class="fas fa-save me-2"></i>
+
+                                Update Profile
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>
+
+{% endblock main %}
