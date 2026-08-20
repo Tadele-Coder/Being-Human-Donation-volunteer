@@ -1,0 +1,4080 @@
+/* =====================================================
+   DONSVOL PROFESSIONAL HOMEPAGE
+===================================================== */
+
+:root {
+    --donsvol-primary: #159a96;
+    --donsvol-primary-dark: #117d7a;
+    --donsvol-blue: #172554;
+    --donsvol-text: #64748b;
+    --donsvol-light: #f4fbfb;
+    --donsvol-border: #dceeee;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.donsvol-hero {
+    padding: 90px 0 80px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.hero-label {
+    display: inline-block;
+    padding: 8px 18px;
+    border-radius: 30px;
+    background: #e7f7f6;
+    color: var(--donsvol-primary);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+.hero-title {
+    font-size: 62px;
+    line-height: 1.04;
+    font-weight: 800;
+    color: var(--donsvol-blue);
+    margin-bottom: 25px;
+}
+
+.hero-title span {
+    color: var(--donsvol-primary);
+}
+
+.hero-text {
+    max-width: 570px;
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--donsvol-text);
+    margin-bottom: 30px;
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn-donsvol {
+    background: var(--donsvol-primary);
+    border: 2px solid var(--donsvol-primary);
+    color: white;
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-weight: 600;
+}
+
+.btn-donsvol:hover {
+    background: var(--donsvol-primary-dark);
+    border-color: var(--donsvol-primary-dark);
+    color: white;
+}
+
+.btn-volunteer {
+    background: white;
+    border: 2px solid var(--donsvol-primary);
+    color: var(--donsvol-primary);
+    border-radius: 8px;
+    padding: 12px 25px;
+    font-weight: 600;
+}
+
+.btn-volunteer:hover {
+    background: var(--donsvol-primary);
+    color: white;
+}
+
+
+/* HERO IMAGE */
+
+.hero-image-container {
+    position: relative;
+    padding-left: 30px;
+}
+
+.hero-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+}
+
+.hero-image-badge {
+    position: absolute;
+    left: 10px;
+    bottom: 30px;
+
+    background: white;
+    border-radius: 12px;
+    padding: 15px 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.badge-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e7f7f6;
+    color: var(--donsvol-primary);
+}
+
+.hero-image-badge strong {
+    display: block;
+    color: var(--donsvol-blue);
+}
+
+.hero-image-badge small {
+    color: var(--donsvol-text);
+}
+
+
+/* =====================================================
+   TRUST
+===================================================== */
+
+.trust-section {
+    padding: 25px 0;
+    background: #f4fbfb;
+    border-top: 1px solid var(--donsvol-border);
+    border-bottom: 1px solid var(--donsvol-border);
+}
+
+.trust-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+}
+
+.trust-icon {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #dff4f2;
+    color: var(--donsvol-primary);
+
+    font-size: 21px;
+}
+
+.trust-item h5 {
+    margin: 0;
+    color: var(--donsvol-blue);
+    font-weight: 700;
+}
+
+.trust-item p {
+    margin: 3px 0 0;
+    color: var(--donsvol-text);
+}
+
+
+/* =====================================================
+   SECTION HEADING
+===================================================== */
+
+.section-heading {
+    max-width: 750px;
+    margin: auto;
+}
+
+.section-heading span {
+    color: var(--donsvol-primary);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.section-heading h2 {
+    margin-top: 8px;
+    color: var(--donsvol-blue);
+    font-size: 38px;
+    font-weight: 800;
+}
+
+.section-heading p {
+    color: var(--donsvol-text);
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   JOIN SECTION
+===================================================== */
+
+.join-section {
+    padding: 90px 0;
+    background: white;
+}
+
+.role-card {
+    height: 100%;
+    padding: 40px;
+    border-radius: 18px;
+    background: white;
+
+    border: 1px solid var(--donsvol-border);
+
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.07);
+
+    transition: all 0.3s ease;
+}
+
+.role-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+}
+
+.role-icon {
+    width: 65px;
+    height: 65px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e6f6f5;
+    color: var(--donsvol-primary);
+
+    font-size: 27px;
+
+    margin-bottom: 20px;
+}
+
+.volunteer-role-icon {
+    background: #e8f0ff;
+    color: #2563eb;
+}
+
+.role-card h3 {
+    color: var(--donsvol-blue);
+    font-size: 28px;
+    font-weight: 750;
+}
+
+.role-card p {
+    color: var(--donsvol-text);
+    line-height: 1.7;
+}
+
+.role-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 25px 0;
+}
+
+.role-card li {
+    margin-bottom: 12px;
+    color: #475569;
+}
+
+.role-card li i {
+    color: var(--donsvol-primary);
+    margin-right: 8px;
+}
+
+.role-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.role-login {
+    color: var(--donsvol-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.role-login:hover {
+    color: var(--donsvol-primary-dark);
+}
+
+
+/* =====================================================
+   HOW IT WORKS
+===================================================== */
+
+.how-section {
+    padding: 90px 0;
+    background: #f7fbfc;
+}
+
+.step-card {
+    position: relative;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.step-number {
+    color: #cbd5e1;
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.step-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: 10px auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e5f7f5;
+    color: var(--donsvol-primary);
+
+    border-radius: 50%;
+
+    font-size: 26px;
+}
+
+.step-card h4 {
+    color: var(--donsvol-blue);
+    font-weight: 700;
+}
+
+.step-card p {
+    color: var(--donsvol-text);
+}
+
+
+/* =====================================================
+   CATEGORIES
+===================================================== */
+
+.categories-section {
+    padding: 90px 0;
+    background: white;
+}
+
+.category-card {
+    text-align: center;
+    padding: 30px 15px;
+
+    border: 1px solid var(--donsvol-border);
+    border-radius: 15px;
+
+    transition: 0.3s;
+}
+
+.category-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--donsvol-primary);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.category-card i {
+    font-size: 35px;
+    color: var(--donsvol-primary);
+    margin-bottom: 15px;
+}
+
+.category-card h5 {
+    color: var(--donsvol-blue);
+    font-weight: 700;
+}
+
+.category-card p {
+    color: var(--donsvol-text);
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   IMPACT
+===================================================== */
+
+.impact-section {
+    padding: 90px 0;
+    background: var(--donsvol-blue);
+    color: white;
+}
+
+.light-heading span {
+    color: #58d2cc;
+}
+
+.light-heading h2 {
+    color: white;
+}
+
+.light-heading p {
+    color: #cbd5e1;
+}
+
+.impact-number i {
+    font-size: 30px;
+    color: #58d2cc;
+}
+
+.impact-number h2 {
+    display: inline;
+    color: white;
+    font-size: 45px;
+    font-weight: 800;
+}
+
+.impact-section h4 {
+    color: white;
+    margin-top: 10px;
+}
+
+.impact-section .col-md-4 p {
+    color: #cbd5e1;
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.gallery-preview {
+    padding: 90px 0;
+    background: #f7fbfc;
+}
+
+
+/* =====================================================
+   CALL TO ACTION
+===================================================== */
+
+.cta-section {
+    padding: 90px 0;
+    background: var(--donsvol-primary);
+    color: white;
+}
+
+.cta-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.cta-section h2 {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.cta-section p {
+    font-size: 18px;
+    opacity: 0.9;
+}
+
+.cta-section .btn-light {
+    color: var(--donsvol-primary);
+    font-weight: 600;
+    padding: 13px 25px;
+    border-radius: 8px;
+}
+
+.cta-section .btn-outline-light {
+    padding: 13px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-section {
+    padding: 90px 0;
+    background: white;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 35px 20px;
+    border: 1px solid var(--donsvol-border);
+    border-radius: 15px;
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+
+    margin: auto auto 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e5f7f5;
+    color: var(--donsvol-primary);
+
+    font-size: 23px;
+}
+
+.contact-card h5 {
+    color: var(--donsvol-blue);
+    font-weight: 700;
+}
+
+.contact-card p {
+    color: var(--donsvol-text);
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 991px) {
+
+    .hero-title {
+        font-size: 48px;
+    }
+
+    .hero-image-container {
+        padding-left: 0;
+        margin-top: 50px;
+    }
+
+    .hero-image {
+        height: 400px;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .donsvol-hero {
+        padding: 60px 0;
+    }
+
+    .hero-title {
+        font-size: 40px;
+    }
+
+    .hero-text {
+        font-size: 16px;
+    }
+
+    .hero-image {
+        height: 320px;
+    }
+
+    .hero-image-badge {
+        left: 10px;
+        bottom: 20px;
+    }
+
+    .section-heading h2 {
+        font-size: 30px;
+    }
+
+    .join-section,
+    .how-section,
+    .categories-section,
+    .impact-section,
+    .gallery-preview,
+    .contact-section {
+        padding: 65px 0;
+    }
+
+    .role-card {
+        padding: 30px 25px;
+    }
+
+}
+
+/* =====================================================
+DONSVOL NAVBAR
+Add this at the bottom of style.css
+===================================================== */
+
+.donsvol-navbar {
+background: #ffffff;
+padding: 13px 0;
+border-bottom: 1px solid var(--donsvol-border);
+box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+position: relative;
+z-index: 1030;
+}
+
+/* =====================================================
+LOGO
+===================================================== */
+
+.donsvol-logo {
+display: flex;
+align-items: center;
+gap: 10px;
+
+color: var(--donsvol-blue) !important;
+text-decoration: none !important;
+
+font-size: 22px;
+font-weight: 800;
+letter-spacing: 0.4px;
+
+}
+
+.donsvol-logo {
+color: var(--donsvol-blue) !important;
+}
+
+/* Logo icon */
+
+.donsvol-logo .logo-icon {
+width: 45px;
+height: 45px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: var(--donsvol-primary);
+color: #ffffff;
+
+border-radius: 12px;
+
+font-size: 21px;
+
+box-shadow: 0 6px 15px rgba(21, 154, 150, 0.25);
+
+transition: all 0.3s ease;
+
+}
+
+/* Logo hover */
+
+.donsvol-logo .logo-icon {
+background: var(--donsvol-primary-dark);
+transform: translateY(-2px);
+}
+
+/* Logo text */
+
+.donsvol-logo .logo-text {
+display: flex;
+flex-direction: column;
+line-height: 1.1;
+}
+
+/* Logo subtitle */
+
+.donsvol-logo .logo-text small {
+display: block;
+
+margin-top: 3px;
+
+color: var(--donsvol-text);
+
+font-size: 9px;
+font-weight: 600;
+
+letter-spacing: 1px;
+
+}
+
+/* =====================================================
+NAVIGATION LINKS
+===================================================== */
+
+.donsvol-navbar .nav-link {
+position: relative;
+
+color: var(--donsvol-blue) !important;
+
+font-size: 15px;
+font-weight: 600;
+
+padding: 10px 13px !important;
+
+text-decoration: none;
+
+transition: color 0.25s ease;
+
+}
+
+/* Hover */
+
+.donsvol-navbar .nav-link {
+color: var(--donsvol-primary) !important;
+}
+
+/* Teal underline */
+
+.donsvol-navbar .nav-link::after {
+content: "";
+
+position: absolute;
+
+left: 13px;
+right: 13px;
+bottom: 3px;
+
+height: 2px;
+
+background: var(--donsvol-primary);
+
+border-radius: 5px;
+
+transform: scaleX(0);
+
+transition: transform 0.25s ease;
+
+}
+
+.donsvol-navbar .nav-link:hover::after {
+transform: scaleX(1);
+}
+
+/* =====================================================
+LOGIN
+===================================================== */
+
+.donsvol-login {
+position: relative;
+}
+
+/* Login arrow */
+
+.login-arrow {
+font-size: 9px;
+
+transition: transform 0.25s ease;
+
+}
+
+/* When menu is open */
+
+.donsvol-login.open .login-arrow {
+transform: rotate(180deg);
+}
+
+/* =====================================================
+LOGIN DROPDOWN
+===================================================== */
+
+.donsvol-login-menu {
+display: none;
+
+position: absolute;
+
+top: calc(100% + 5px);
+right: 0;
+
+width: 220px;
+
+margin: 0;
+padding: 8px;
+
+list-style: none;
+
+background: #ffffff;
+
+border: 1px solid var(--donsvol-border);
+
+border-radius: 12px;
+
+box-shadow: 0 15px 35px rgba(15, 23, 42, 0.14);
+
+z-index: 2000;
+
+}
+
+/* Show dropdown */
+
+.donsvol-login-menu.show {
+display: block;
+}
+
+/* Dropdown links */
+
+.donsvol-login-menu li a {
+display: flex;
+align-items: center;
+
+width: 100%;
+
+padding: 11px 14px;
+
+border-radius: 8px;
+
+color: var(--donsvol-blue);
+
+background: transparent;
+
+text-decoration: none;
+
+font-size: 14px;
+font-weight: 600;
+
+transition: all 0.2s ease;
+
+}
+
+/* Dropdown icons */
+
+.donsvol-login-menu li a i {
+width: 25px;
+
+color: var(--donsvol-primary);
+
+font-size: 15px;
+
+}
+
+/* Dropdown hover */
+
+.donsvol-login-menu li a {
+background: #e7f7f6;
+
+color: var(--donsvol-primary);
+
+padding-left: 18px;
+
+}
+
+/* Divider */
+
+.donsvol-login-menu .login-divider {
+height: 1px;
+
+margin: 7px 5px;
+
+background: var(--donsvol-border);
+
+}
+
+/* =====================================================
+DONATE NOW BUTTON
+===================================================== */
+
+.navbar-donate-btn {
+display: inline-block;
+
+margin-left: 8px;
+
+padding: 10px 20px;
+
+background: var(--donsvol-primary);
+
+border: 2px solid var(--donsvol-primary);
+
+border-radius: 8px;
+
+color: #ffffff !important;
+
+text-decoration: none !important;
+
+font-size: 14px;
+font-weight: 700;
+
+line-height: 1.5;
+
+transition: all 0.25s ease;
+
+}
+
+/* Donate hover */
+
+.navbar-donate-btn {
+background: var(--donsvol-primary-dark);
+
+border-color: var(--donsvol-primary-dark);
+
+color: #ffffff !important;
+
+transform: translateY(-2px);
+
+box-shadow: 0 7px 18px rgba(21, 154, 150, 0.25);
+
+}
+
+/* =====================================================
+MOBILE MENU BUTTON
+===================================================== */
+
+.donsvol-navbar .navbar-toggler {
+border: 1px solid var(--donsvol-border);
+
+border-radius: 8px;
+
+padding: 8px 10px;
+
+}
+
+.donsvol-navbar .navbar-toggler {
+outline: none;
+
+box-shadow: 0 0 0 3px rgba(21, 154, 150, 0.15);
+
+}
+
+/* =====================================================
+MOBILE
+===================================================== */
+
+@media (max-width: 991px) {
+
+.donsvol-navbar {
+    padding: 10px 0;
+}
+
+
+.donsvol-navbar .navbar-nav {
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+
+.donsvol-navbar .nav-link {
+    padding: 10px 5px !important;
+}
+
+
+/* Remove underline on mobile */
+
+.donsvol-navbar .nav-link::after {
+    display: none;
+}
+
+
+/* Login dropdown */
+
+.donsvol-login-menu {
+    position: static;
+
+    width: 100%;
+
+    margin-top: 5px;
+
+    background: #f7fbfc;
+
+    border: 1px solid var(--donsvol-border);
+
+    box-shadow: none;
+}
+
+
+/* Donate button */
+
+.navbar-donate-btn {
+    margin-left: 0;
+
+    margin-top: 8px;
+}
+
+}
+
+/* =====================================================
+SMALL MOBILE
+===================================================== */
+
+@media (max-width: 575px) {
+
+.donsvol-logo {
+    font-size: 19px;
+}
+
+
+.donsvol-logo .logo-icon {
+    width: 40px;
+    height: 40px;
+
+    font-size: 18px;
+}
+
+
+.donsvol-logo .logo-text small {
+    font-size: 8px;
+}
+
+}
+
+
+/* =====================================================
+DONSVOL FOOTER
+===================================================== */
+
+.donsvol-footer {
+background: #172554;
+color: #ffffff;
+padding-top: 65px;
+}
+
+/* =====================================================
+FOOTER MAIN
+===================================================== */
+
+.footer-main {
+padding-bottom: 50px;
+}
+
+/* =====================================================
+FOOTER LOGO
+===================================================== */
+
+.footer-logo {
+display: flex;
+align-items: center;
+gap: 12px;
+
+color: #ffffff;
+
+font-size: 25px;
+font-weight: 800;
+
+margin-bottom: 20px;
+
+}
+
+.footer-logo small {
+display: block;
+
+color: #94a3b8;
+
+font-size: 9px;
+font-weight: 600;
+
+letter-spacing: 1px;
+
+margin-top: -2px;
+
+}
+
+.footer-logo-icon {
+width: 48px;
+height: 48px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: #159a96;
+color: #ffffff;
+
+border-radius: 12px;
+
+font-size: 22px;
+
+box-shadow: 0 7px 18px rgba(21, 154, 150, 0.25);
+
+}
+
+/* =====================================================
+FOOTER TEXT
+===================================================== */
+
+.footer-text {
+max-width: 520px;
+
+color: #cbd5e1;
+
+font-size: 15px;
+line-height: 1.8;
+
+margin-bottom: 25px;
+
+}
+
+/* =====================================================
+SOCIAL MEDIA
+===================================================== */
+
+.footer-social {
+display: flex;
+gap: 10px;
+}
+
+.footer-social a {
+width: 40px;
+height: 40px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: rgba(255, 255, 255, 0.08);
+color: #ffffff;
+
+border: 1px solid rgba(255, 255, 255, 0.12);
+
+border-radius: 8px;
+
+text-decoration: none;
+
+font-size: 16px;
+
+transition: all 0.25s ease;
+
+}
+
+.footer-social a {
+background: #159a96;
+border-color: #159a96;
+
+color: #ffffff;
+
+transform: translateY(-3px);
+
+}
+
+/* =====================================================
+FOOTER TITLES
+===================================================== */
+
+.footer-title {
+color: #ffffff;
+
+font-size: 18px;
+font-weight: 700;
+
+margin-bottom: 22px;
+
+position: relative;
+
+}
+
+.footer-title::after {
+content: "";
+
+display: block;
+
+width: 38px;
+height: 3px;
+
+background: #159a96;
+
+border-radius: 5px;
+
+margin-top: 9px;
+
+}
+
+/* =====================================================
+QUICK LINKS
+===================================================== */
+
+.footer-links {
+list-style: none;
+
+padding: 0;
+margin: 0;
+
+}
+
+.footer-links li {
+margin-bottom: 12px;
+}
+
+.footer-links a {
+display: inline-flex;
+align-items: center;
+
+color: #cbd5e1;
+
+text-decoration: none;
+
+font-size: 15px;
+
+transition: all 0.25s ease;
+
+}
+
+.footer-links a i {
+color: #159a96;
+
+margin-right: 9px;
+
+font-size: 13px;
+
+transition: transform 0.25s ease;
+
+}
+
+.footer-links a {
+color: #ffffff;
+
+transform: translateX(4px);
+
+}
+
+.footer-links a i {
+transform: translateX(3px);
+}
+
+/* =====================================================
+CONTACT
+===================================================== */
+
+.footer-contact {
+margin-bottom: 20px;
+}
+
+.footer-contact p {
+display: flex;
+align-items: flex-start;
+
+gap: 12px;
+
+color: #cbd5e1;
+
+font-size: 15px;
+
+margin-bottom: 14px;
+
+}
+
+.footer-contact p i {
+width: 20px;
+
+color: #159a96;
+
+font-size: 16px;
+
+margin-top: 3px;
+
+}
+
+/* =====================================================
+FOOTER DONATE BUTTON
+===================================================== */
+
+.footer-donate-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+
+background: #159a96;
+
+border: 2px solid #159a96;
+
+color: #ffffff;
+
+text-decoration: none;
+
+border-radius: 8px;
+
+padding: 10px 20px;
+
+font-size: 14px;
+font-weight: 700;
+
+transition: all 0.25s ease;
+
+}
+
+.footer-donate-btn {
+background: #117d7a;
+
+border-color: #117d7a;
+
+color: #ffffff;
+
+transform: translateY(-2px);
+
+box-shadow: 0 8px 20px rgba(21, 154, 150, 0.25);
+
+}
+
+/* =====================================================
+FOOTER BOTTOM
+===================================================== */
+
+.footer-bottom {
+border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+padding: 22px 0;
+
+}
+
+.footer-bottom p {
+color: #94a3b8;
+
+font-size: 14px;
+
+}
+
+.footer-bottom strong {
+color: #ffffff;
+}
+
+/* =====================================================
+MOBILE FOOTER
+===================================================== */
+
+@media (max-width: 767px) {
+
+.donsvol-footer {
+    padding-top: 50px;
+}
+
+
+.footer-main {
+    padding-bottom: 35px;
+}
+
+
+.footer-logo {
+    font-size: 22px;
+}
+
+
+.footer-title {
+    margin-top: 15px;
+}
+
+
+.footer-bottom {
+    padding: 20px 0;
+}
+
+
+.footer-bottom p {
+    font-size: 13px;
+}
+
+}
+
+
+
+
+/* =========================================================
+LOGIN PAGE
+========================================================= */
+
+.login-section {
+background: #ffffff;
+min-height: 75vh;
+display: flex;
+align-items: center;
+}
+
+/* Left Introduction */
+
+.login-intro h1 {
+font-size: 2.8rem;
+color: var(--donsvol-blue);
+}
+
+.login-intro h4 {
+color: var(--donsvol-blue);
+}
+
+.login-icon {
+width: 70px;
+height: 70px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: var(--donsvol-primary);
+color: #ffffff;
+
+border-radius: 18px;
+
+font-size: 30px;
+
+box-shadow: 0 10px 25px rgba(21, 154, 150, 0.20);
+
+}
+
+/* Feature List */
+
+.login-features i {
+color: var(--donsvol-primary);
+font-size: 20px;
+}
+
+/* Login Card */
+
+.login-card {
+background: #ffffff;
+
+border-radius: 20px;
+
+padding: 40px;
+
+border: 1px solid var(--donsvol-border);
+
+box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+
+}
+
+/* Login Icon */
+
+.login-form-icon {
+width: 60px;
+height: 60px;
+
+margin: auto;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+background: #e7f7f6;
+color: var(--donsvol-primary);
+
+border-radius: 50%;
+
+font-size: 24px;
+
+}
+
+/* Form Labels */
+
+.login-card .form-label {
+color: var(--donsvol-blue);
+}
+
+/* Form Inputs */
+
+.login-card input {
+width: 100%;
+
+padding: 12px 15px;
+
+border: 1px solid var(--donsvol-border);
+
+border-radius: 10px;
+
+outline: none;
+
+transition: 0.3s;
+
+}
+
+.login-card input {
+border-color: var(--donsvol-primary);
+
+box-shadow: 0 0 0 3px rgba(21, 154, 150, 0.10);
+
+}
+
+/* =========================================================
+LOGIN BUTTON
+Same color as DONSVOL Home Page
+========================================================= */
+
+.login-btn {
+background: var(--donsvol-primary);
+
+border: 2px solid var(--donsvol-primary);
+
+color: #ffffff;
+
+border-radius: 8px;
+
+padding: 12px 25px;
+
+font-weight: 600;
+
+transition: all 0.25s ease;
+
+}
+
+.login-btn {
+background: var(--donsvol-primary-dark);
+
+border-color: var(--donsvol-primary-dark);
+
+color: #ffffff;
+
+transform: translateY(-2px);
+
+box-shadow: 0 7px 18px rgba(21, 154, 150, 0.25);
+
+}
+
+/* Forgot Password */
+
+.forgot-password {
+color: var(--donsvol-primary);
+
+text-decoration: none;
+
+font-size: 14px;
+
+}
+
+.forgot-password {
+color: var(--donsvol-primary-dark);
+
+text-decoration: underline;
+
+}
+
+/* Back Home */
+
+.back-home {
+color: var(--donsvol-text);
+
+text-decoration: none;
+
+font-size: 14px;
+
+}
+
+.back-home {
+color: var(--donsvol-primary);
+}
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+@media (max-width: 991px) {
+
+.login-intro {
+    text-align: center;
+    padding-right: 0 !important;
+}
+
+.login-icon {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-features {
+    display: inline-block;
+    text-align: left;
+}
+
+}
+
+@media (max-width: 576px) {
+
+.login-card {
+    padding: 25px 20px;
+}
+
+.login-intro h1 {
+    font-size: 2.2rem;
+}
+
+}
+
+
+
+ /* ==========================================
+    PASSWORD SHOW / HIDE BUTTON
+    ========================================== */
+
+.password-toggle {
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #dee2e6;
+    background-color: #fff;
+    color: #6c757d;
+    transition: all 0.2s ease;
+}
+
+.password-toggle:hover {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.password-toggle:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.password-toggle i {
+    font-size: 16px;
+}
+
+
+/* ==========================================
+   PASSWORD INPUT
+   ========================================== */
+
+.input-group .form-control {
+    border-right: 0;
+}
+
+.input-group .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: none;
+}
+
+.input-group .form-control:focus + .password-toggle {
+    border-color: #0d6efd;
+}
+
+
+/* ==========================================
+   PASSWORD INPUT GROUP
+   ========================================== */
+
+.input-group {
+    width: 100%;
+}
+
+.input-group .form-control {
+    min-height: 48px;
+}
+
+.input-group .password-toggle {
+    min-height: 48px;
+}
+
+
+/* ==========================================
+   PASSWORD TOGGLE ACTIVE STATE
+   ========================================== */
+
+.password-toggle.active {
+    color: #0d6efd;
+    background-color: #f8f9fa;
+}
+
+/* =========================================================
+   DONSVOL GALLERY PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   GALLERY PAGE BACKGROUND
+   ========================================================= */
+
+.donsvol-gallery-page {
+    min-height: 75vh;
+
+    background: #f7fbfc;
+
+    padding: 70px 0 90px;
+
+    font-family: "Poppins",
+                 -apple-system,
+                 BlinkMacSystemFont,
+                 "Segoe UI",
+                 sans-serif;
+}
+
+
+/* =========================================================
+   GALLERY PAGE HEADER
+   ========================================================= */
+
+.gallery-page-header {
+    text-align: center;
+
+    max-width: 760px;
+
+    margin: 0 auto 45px;
+}
+
+
+/* =========================================================
+   GALLERY LABEL
+   ========================================================= */
+
+.gallery-page-label {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   GALLERY TITLE
+   ========================================================= */
+
+.gallery-page-header h1 {
+    margin: 0 0 12px;
+
+    color: #172554;
+
+    font-size: 42px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+
+.gallery-page-header h1 span {
+    color: #159a96;
+}
+
+
+/* =========================================================
+   GALLERY DESCRIPTION
+   ========================================================= */
+
+.gallery-page-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   GALLERY TABLE CARD
+   ========================================================= */
+
+.gallery-table-card {
+    background: #ffffff;
+
+    border: 1px solid #dceeee;
+
+    border-radius: 18px;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.07);
+}
+
+
+/* =========================================================
+   TABLE RESPONSIVE WRAPPER
+   ========================================================= */
+
+.gallery-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* =========================================================
+   GALLERY TABLE
+   ========================================================= */
+
+.donsvol-gallery-table {
+    width: 100%;
+
+    min-width: 950px;
+
+    margin: 0;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    background: #ffffff;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.donsvol-gallery-table thead th {
+    background: #172554 !important;
+
+    color: #ffffff !important;
+
+    border: none !important;
+
+    padding: 18px 20px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    vertical-align: middle;
+}
+
+
+.donsvol-gallery-table thead th:first-child {
+    border-top-left-radius: 17px;
+}
+
+
+.donsvol-gallery-table thead th:last-child {
+    border-top-right-radius: 17px;
+}
+
+
+/* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+.donsvol-gallery-table tbody tr {
+    background: #ffffff;
+
+    transition: background 0.25s ease;
+}
+
+
+.donsvol-gallery-table tbody tr:hover {
+    background: #f4fbfb;
+}
+
+
+.donsvol-gallery-table tbody td,
+.donsvol-gallery-table tbody th {
+    padding: 25px 20px;
+
+    border-bottom: 1px solid #dceeee !important;
+
+    border-top: none !important;
+
+    border-left: none !important;
+
+    border-right: none !important;
+
+    vertical-align: middle;
+
+    color: #64748b;
+}
+
+
+/* =========================================================
+   LAST TABLE ROW
+   ========================================================= */
+
+.donsvol-gallery-table tbody tr:last-child td,
+.donsvol-gallery-table tbody tr:last-child th {
+    border-bottom: none !important;
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.gallery-number {
+    width: 60px;
+
+    color: #159a96 !important;
+
+    font-size: 17px;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   DONATION TITLE
+   ========================================================= */
+
+.gallery-donation-title {
+    color: #172554;
+
+    font-size: 20px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   DELIVERY IMAGE
+   ========================================================= */
+
+.gallery-delivery-image {
+    width: 150px;
+
+    height: 150px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    border: 3px solid #e7f7f6;
+
+    box-shadow: 0 8px 25px rgba(15, 23, 42, 0.10);
+
+    margin-bottom: 16px;
+
+    transition: all 0.3s ease;
+}
+
+
+.gallery-delivery-image:hover {
+    transform: scale(1.03);
+
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.15);
+}
+
+
+/* =========================================================
+   DONATION INFORMATION
+   ========================================================= */
+
+.gallery-info {
+    margin: 7px 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+.gallery-info strong {
+    color: #172554;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   PROFILE IMAGE
+   ========================================================= */
+
+.gallery-profile-image {
+    width: 80px;
+
+    height: 80px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 4px solid #e7f7f6;
+
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.10);
+
+    margin-bottom: 12px;
+
+    transition: all 0.3s ease;
+}
+
+
+.gallery-profile-image:hover {
+    transform: scale(1.05);
+
+    border-color: #159a96;
+}
+
+
+/* =========================================================
+   PROFILE PLACEHOLDER
+   ========================================================= */
+
+.gallery-profile-placeholder {
+    width: 80px;
+
+    height: 80px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 12px;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border: 4px solid #e7f7f6;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.10);
+}
+
+
+/* =========================================================
+   PERSON NAME
+   ========================================================= */
+
+.gallery-person-name {
+    color: #172554;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   PERSON INFORMATION
+   ========================================================= */
+
+.gallery-person-info {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin: 3px 0;
+}
+
+
+.gallery-person-info i {
+    width: 20px;
+
+    color: #159a96;
+
+    margin-right: 5px;
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.gallery-empty {
+    padding: 70px 20px !important;
+
+    text-align: center;
+
+    background: #ffffff;
+}
+
+
+.gallery-empty-icon {
+    width: 70px;
+
+    height: 70px;
+
+    margin: 0 auto 18px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 50%;
+
+    font-size: 28px;
+}
+
+
+.gallery-empty h4 {
+    color: #172554;
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+.gallery-empty p {
+    color: #64748b;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   GALLERY RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .donsvol-gallery-page {
+        padding: 55px 0 70px;
+    }
+
+
+    .gallery-page-header h1 {
+        font-size: 36px;
+    }
+
+}
+
+
+/* =========================================================
+   GALLERY RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 767px) {
+
+    .donsvol-gallery-page {
+        padding: 45px 0 60px;
+    }
+
+
+    .gallery-page-header {
+        margin-bottom: 30px;
+    }
+
+
+    .gallery-page-header h1 {
+        font-size: 30px;
+    }
+
+
+    .gallery-page-header p {
+        font-size: 15px;
+    }
+
+
+    .gallery-table-card {
+        border-radius: 14px;
+    }
+
+}
+
+
+/* =========================================================
+   DONSVOL ABOUT PAGE
+========================================================= */
+
+
+/* =========================================================
+   ABOUT PAGE
+========================================================= */
+
+.donsvol-about-page {
+    min-height: 75vh;
+
+    background: #f7fbfc;
+
+    padding: 70px 0 90px;
+
+    font-family: "Poppins",
+                 -apple-system,
+                 BlinkMacSystemFont,
+                 "Segoe UI",
+                 sans-serif;
+}
+
+
+/* =========================================================
+   ABOUT PAGE HEADER
+========================================================= */
+
+.about-page-header {
+    max-width: 800px;
+
+    margin: 0 auto 65px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ABOUT LABEL
+========================================================= */
+
+.about-page-label {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   ABOUT HEADER TITLE
+========================================================= */
+
+.about-page-header h1 {
+    margin: 0 0 15px;
+
+    color: #172554;
+
+    font-size: 46px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+
+.about-page-header h1 span {
+    color: #159a96;
+}
+
+
+/* =========================================================
+   ABOUT HEADER TEXT
+========================================================= */
+
+.about-page-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   ABOUT INTRODUCTION
+========================================================= */
+
+.about-introduction {
+    margin-bottom: 90px;
+}
+
+
+/* =========================================================
+   ABOUT INTRO CONTENT
+========================================================= */
+
+.about-intro-content {
+    padding-right: 30px;
+}
+
+
+/* =========================================================
+   ABOUT SECTION LABEL
+========================================================= */
+
+.about-section-label {
+    display: inline-flex;
+
+    align-items: center;
+
+    color: #159a96;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.8px;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   ABOUT INTRO TITLE
+========================================================= */
+
+.about-intro-content h2 {
+    color: #172554;
+
+    font-size: 38px;
+
+    line-height: 1.25;
+
+    font-weight: 800;
+
+    margin-bottom: 22px;
+}
+
+
+.about-intro-content h2 span {
+    color: #159a96;
+}
+
+
+/* =========================================================
+   ABOUT INTRO TEXT
+========================================================= */
+
+.about-intro-content > p {
+    color: #64748b;
+
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   ABOUT FEATURES
+========================================================= */
+
+.about-feature-list {
+    margin-top: 30px;
+}
+
+
+.about-feature-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================================
+   ABOUT FEATURE ICON
+========================================================= */
+
+.about-feature-icon {
+    flex: 0 0 48px;
+
+    width: 48px;
+
+    height: 48px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 12px;
+
+    font-size: 19px;
+}
+
+
+/* =========================================================
+   ABOUT FEATURE TITLE
+========================================================= */
+
+.about-feature-item h5 {
+    margin: 0 0 4px;
+
+    color: #172554;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   ABOUT FEATURE TEXT
+========================================================= */
+
+.about-feature-item p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   ABOUT INTRO CARD
+========================================================= */
+
+.about-intro-card {
+    position: relative;
+
+    padding: 45px 40px;
+
+    background: #172554;
+
+    border-radius: 22px;
+
+    color: #ffffff;
+
+    overflow: hidden;
+
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+}
+
+
+/* Decorative circle */
+
+.about-intro-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+
+    height: 220px;
+
+    right: -90px;
+
+    top: -90px;
+
+    border-radius: 50%;
+
+    background: rgba(21, 154, 150, 0.18);
+}
+
+
+/* Decorative circle */
+
+.about-intro-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 150px;
+
+    left: -80px;
+
+    bottom: -70px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.04);
+}
+
+
+/* =========================================================
+   ABOUT MAIN ICON
+========================================================= */
+
+.about-main-icon {
+    position: relative;
+
+    z-index: 1;
+
+    width: 70px;
+
+    height: 70px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #159a96;
+
+    color: #ffffff;
+
+    border-radius: 18px;
+
+    font-size: 30px;
+
+    margin-bottom: 25px;
+
+    box-shadow: 0 10px 25px rgba(21, 154, 150, 0.25);
+}
+
+
+/* =========================================================
+   ABOUT CARD TITLE
+========================================================= */
+
+.about-intro-card h3 {
+    position: relative;
+
+    z-index: 1;
+
+    color: #ffffff;
+
+    font-size: 28px;
+
+    font-weight: 800;
+
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   ABOUT CARD TEXT
+========================================================= */
+
+.about-intro-card > p {
+    position: relative;
+
+    z-index: 1;
+
+    color: #cbd5e1;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================================================
+   ABOUT MINI STATS
+========================================================= */
+
+.about-mini-stats {
+    position: relative;
+
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 10px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+
+.about-mini-stat {
+    text-align: center;
+
+    padding: 10px 5px;
+}
+
+
+.about-mini-stat i {
+    display: block;
+
+    color: #58d2cc;
+
+    font-size: 22px;
+
+    margin-bottom: 10px;
+}
+
+
+.about-mini-stat strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 4px;
+}
+
+
+.about-mini-stat span {
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ABOUT PURPOSE SECTION
+========================================================= */
+
+.about-values-section {
+    margin-bottom: 90px;
+}
+
+
+/* =========================================================
+   ABOUT SECTION HEADING
+========================================================= */
+
+.about-section-heading {
+    max-width: 750px;
+
+    margin: 0 auto 45px;
+
+    text-align: center;
+}
+
+
+.about-section-heading .about-page-label {
+    margin-bottom: 12px;
+}
+
+
+.about-section-heading h2 {
+    color: #172554;
+
+    font-size: 38px;
+
+    font-weight: 800;
+
+    margin: 0 0 12px;
+}
+
+
+.about-section-heading h2 span {
+    color: #159a96;
+}
+
+
+.about-section-heading p {
+    color: #64748b;
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   VALUE CARDS
+========================================================= */
+
+.about-value-card {
+    height: 100%;
+
+    padding: 35px 30px;
+
+    background: #ffffff;
+
+    border: 1px solid #dceeee;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+
+    transition: all 0.3s ease;
+}
+
+
+.about-value-card:hover {
+    transform: translateY(-7px);
+
+    border-color: #159a96;
+
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.10);
+}
+
+
+/* =========================================================
+   VALUE ICON
+========================================================= */
+
+.about-value-icon {
+    width: 65px;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 20px;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 50%;
+
+    font-size: 25px;
+}
+
+
+/* Vision */
+
+.about-vision-icon {
+    background: #e8f0ff;
+
+    color: #2563eb;
+}
+
+
+/* Values */
+
+.about-values-icon {
+    background: #fff7df;
+
+    color: #d89b00;
+}
+
+
+/* =========================================================
+   VALUE TITLE
+========================================================= */
+
+.about-value-card h3 {
+    color: #172554;
+
+    font-size: 22px;
+
+    font-weight: 750;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   VALUE TEXT
+========================================================= */
+
+.about-value-card p {
+    color: #64748b;
+
+    font-size: 14px;
+
+    line-height: 1.8;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   DONATION CATEGORIES SECTION
+========================================================= */
+
+.about-categories-section {
+    margin-bottom: 90px;
+}
+
+
+/* =========================================================
+   CATEGORY CARD
+========================================================= */
+
+.about-category-card {
+    height: 100%;
+
+    padding: 30px 20px;
+
+    background: #ffffff;
+
+    border: 1px solid #dceeee;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    transition: all 0.3s ease;
+}
+
+
+.about-category-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #159a96;
+
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   CATEGORY ICON
+========================================================= */
+
+.about-category-icon {
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 16px;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 50%;
+
+    font-size: 23px;
+}
+
+
+/* =========================================================
+   CATEGORY TITLE
+========================================================= */
+
+.about-category-card h5 {
+    color: #172554;
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   CATEGORY TEXT
+========================================================= */
+
+.about-category-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   ABOUT CALL TO ACTION
+========================================================= */
+
+.about-cta {
+    position: relative;
+
+    padding: 60px 30px;
+
+    background: #159a96;
+
+    color: #ffffff;
+
+    border-radius: 22px;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    box-shadow: 0 15px 40px rgba(21, 154, 150, 0.20);
+}
+
+
+/* =========================================================
+   CTA DECORATION
+========================================================= */
+
+.about-cta::before {
+    content: "";
+
+    position: absolute;
+
+    width: 220px;
+
+    height: 220px;
+
+    left: -90px;
+
+    top: -110px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+}
+
+
+.about-cta::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+
+    height: 180px;
+
+    right: -70px;
+
+    bottom: -100px;
+
+    border-radius: 50%;
+
+    background: rgba(23, 37, 84, 0.10);
+}
+
+
+/* =========================================================
+   CTA ICON
+========================================================= */
+
+.about-cta-icon {
+    position: relative;
+
+    z-index: 1;
+
+    width: 65px;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 18px;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    border-radius: 50%;
+
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   CTA TITLE
+========================================================= */
+
+.about-cta h2 {
+    position: relative;
+
+    z-index: 1;
+
+    color: #ffffff;
+
+    font-size: 34px;
+
+    font-weight: 800;
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   CTA TEXT
+========================================================= */
+
+.about-cta > p {
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 600px;
+
+    margin: 0 auto 25px;
+
+    color: rgba(255, 255, 255, 0.90);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   CTA BUTTONS
+========================================================= */
+
+.about-cta-buttons {
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+}
+
+
+/* =========================================================
+   PRIMARY CTA
+========================================================= */
+
+.about-cta-primary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    background: #ffffff;
+
+    color: #159a96;
+
+    border: 2px solid #ffffff;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: all 0.25s ease;
+}
+
+
+.about-cta-primary:hover {
+    background: #172554;
+
+    border-color: #172554;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   SECONDARY CTA
+========================================================= */
+
+.about-cta-secondary {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 12px 22px;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    border: 2px solid rgba(255, 255, 255, 0.75);
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    transition: all 0.25s ease;
+}
+
+
+.about-cta-secondary:hover {
+    background: #ffffff;
+
+    border-color: #ffffff;
+
+    color: #159a96;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   ABOUT TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .donsvol-about-page {
+        padding: 55px 0 70px;
+    }
+
+
+    .about-page-header {
+        margin-bottom: 50px;
+    }
+
+
+    .about-page-header h1 {
+        font-size: 38px;
+    }
+
+
+    .about-intro-content {
+        padding-right: 0;
+    }
+
+
+    .about-intro-card {
+        margin-top: 15px;
+    }
+
+
+    .about-introduction,
+    .about-values-section,
+    .about-categories-section {
+        margin-bottom: 70px;
+    }
+
+}
+
+
+/* =========================================================
+   ABOUT MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .donsvol-about-page {
+        padding: 45px 0 60px;
+    }
+
+
+    .about-page-header {
+        margin-bottom: 40px;
+    }
+
+
+    .about-page-header h1 {
+        font-size: 30px;
+    }
+
+
+    .about-page-header p {
+        font-size: 15px;
+    }
+
+
+    .about-intro-content h2 {
+        font-size: 30px;
+    }
+
+
+    .about-intro-card {
+        padding: 35px 25px;
+    }
+
+
+    .about-intro-card h3 {
+        font-size: 25px;
+    }
+
+
+    .about-mini-stats {
+        grid-template-columns: 1fr;
+
+        gap: 15px;
+    }
+
+
+    .about-mini-stat {
+        padding: 5px;
+    }
+
+
+    .about-section-heading h2 {
+        font-size: 30px;
+    }
+
+
+    .about-value-card {
+        padding: 30px 25px;
+    }
+
+
+    .about-cta {
+        padding: 45px 20px;
+    }
+
+
+    .about-cta h2 {
+        font-size: 28px;
+    }
+
+
+    .about-cta-buttons {
+        flex-direction: column;
+    }
+
+
+    .about-cta-primary,
+    .about-cta-secondary {
+        width: 100%;
+
+        max-width: 280px;
+    }
+
+}
+
+
+/* =========================================================
+   ABOUT SMALL MOBILE
+========================================================= */
+
+@media (max-width: 575px) {
+
+    .about-page-header h1 {
+        font-size: 27px;
+    }
+
+
+    .about-intro-content h2 {
+        font-size: 27px;
+    }
+
+
+    .about-feature-item {
+        gap: 12px;
+    }
+
+
+    .about-feature-icon {
+        flex-basis: 43px;
+
+        width: 43px;
+
+        height: 43px;
+
+        font-size: 17px;
+    }
+
+
+    .about-cta h2 {
+        font-size: 25px;
+    }
+
+}
+
+
+/* =========================================================
+   DONSVOL CONTACT PAGE
+========================================================= */
+
+
+/* =========================================================
+   CONTACT PAGE
+========================================================= */
+
+.donsvol-contact-page {
+    min-height: 75vh;
+
+    background: #f7fbfc;
+
+    padding: 70px 0 90px;
+
+    font-family: "Poppins",
+                 -apple-system,
+                 BlinkMacSystemFont,
+                 "Segoe UI",
+                 sans-serif;
+}
+
+
+/* =========================================================
+   CONTACT PAGE HEADER
+========================================================= */
+
+.contact-page-header {
+    max-width: 800px;
+
+    margin: 0 auto 55px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   CONTACT LABEL
+========================================================= */
+
+.contact-page-label {
+    display: inline-block;
+
+    padding: 8px 18px;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 16px;
+}
+
+
+/* =========================================================
+   CONTACT TITLE
+========================================================= */
+
+.contact-page-header h1 {
+    margin: 0 0 15px;
+
+    color: #172554;
+
+    font-size: 46px;
+
+    line-height: 1.2;
+
+    font-weight: 800;
+}
+
+
+.contact-page-header h1 span {
+    color: #159a96;
+}
+
+
+/* =========================================================
+   CONTACT DESCRIPTION
+========================================================= */
+
+.contact-page-header p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   CONTACT INFORMATION CARD
+========================================================= */
+
+.contact-info-card {
+    height: 100%;
+
+    padding: 40px 35px;
+
+    background: #172554;
+
+    border-radius: 20px;
+
+    color: #ffffff;
+
+    box-shadow: 0 15px 40px rgba(15, 23, 42, 0.12);
+}
+
+
+/* =========================================================
+   CONTACT INFO HEADER
+========================================================= */
+
+.contact-info-header {
+    margin-bottom: 35px;
+}
+
+
+.contact-info-icon {
+    width: 65px;
+
+    height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    background: #159a96;
+
+    color: #ffffff;
+
+    border-radius: 16px;
+
+    font-size: 27px;
+}
+
+
+.contact-info-header h2 {
+    color: #ffffff;
+
+    font-size: 27px;
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+
+.contact-info-header p {
+    color: #cbd5e1;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   CONTACT DETAIL
+========================================================= */
+
+.contact-detail-item {
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+.contact-detail-item:last-of-type {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   CONTACT DETAIL ICON
+========================================================= */
+
+.contact-detail-icon {
+    flex: 0 0 42px;
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(21, 154, 150, 0.18);
+
+    color: #58d2cc;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   CONTACT DETAIL TEXT
+========================================================= */
+
+.contact-detail-item span {
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+
+    margin-bottom: 4px;
+}
+
+
+.contact-detail-item a {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    text-decoration: none;
+
+    transition: color 0.25s ease;
+}
+
+
+.contact-detail-item a:hover {
+    color: #58d2cc;
+}
+
+
+.contact-detail-item p {
+    color: #ffffff;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   SOCIAL MEDIA
+========================================================= */
+
+.contact-social-section {
+    margin-top: 30px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+.contact-social-section h5 {
+    color: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+
+.contact-social-links {
+    display: flex;
+
+    gap: 10px;
+}
+
+
+.contact-social-links a {
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: #ffffff;
+
+    border-radius: 9px;
+
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+}
+
+
+.contact-social-links a:hover {
+    background: #159a96;
+
+    color: #ffffff;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   CONTACT FORM CARD
+========================================================= */
+
+.contact-form-card {
+    height: 100%;
+
+    padding: 40px;
+
+    background: #ffffff;
+
+    border: 1px solid #dceeee;
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.07);
+}
+
+
+/* =========================================================
+   CONTACT FORM HEADER
+========================================================= */
+
+.contact-form-header {
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    margin-bottom: 30px;
+}
+
+
+.contact-form-icon {
+    flex: 0 0 55px;
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 13px;
+
+    font-size: 22px;
+}
+
+
+.contact-form-header h2 {
+    color: #172554;
+
+    font-size: 26px;
+
+    font-weight: 800;
+
+    margin: 0 0 5px;
+}
+
+
+.contact-form-header p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   FORM LABEL
+========================================================= */
+
+.contact-form-label {
+    display: block;
+
+    color: #172554;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+========================================================= */
+
+.contact-input-wrapper,
+.contact-textarea-wrapper {
+    position: relative;
+}
+
+
+/* =========================================================
+   INPUT ICON
+========================================================= */
+
+.contact-input-wrapper > i,
+.contact-textarea-wrapper > i {
+    position: absolute;
+
+    left: 16px;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #159a96;
+
+    font-size: 14px;
+
+    z-index: 2;
+}
+
+
+.contact-textarea-wrapper > i {
+    top: 20px;
+
+    transform: none;
+}
+
+
+/* =========================================================
+   FORM INPUT
+========================================================= */
+
+.contact-form-control {
+    width: 100%;
+
+    padding: 13px 15px 13px 43px;
+
+    background: #f7fbfc;
+
+    color: #172554;
+
+    border: 1px solid #dceeee;
+
+    border-radius: 9px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    transition: all 0.25s ease;
+}
+
+
+.contact-form-control::placeholder {
+    color: #94a3b8;
+}
+
+
+.contact-form-control:focus {
+    background: #ffffff;
+
+    border-color: #159a96;
+
+    box-shadow: 0 0 0 3px rgba(21, 154, 150, 0.10);
+}
+
+
+/* =========================================================
+   TEXTAREA
+========================================================= */
+
+.contact-textarea {
+    min-height: 145px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+
+    padding-top: 13px;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.contact-submit-button {
+    width: 100%;
+
+    margin-top: 5px;
+
+    padding: 13px 22px;
+
+    background: #159a96;
+
+    color: #ffffff;
+
+    border: 2px solid #159a96;
+
+    border-radius: 9px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+
+.contact-submit-button:hover {
+    background: #117d7a;
+
+    border-color: #117d7a;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 20px rgba(21, 154, 150, 0.20);
+}
+
+
+/* =========================================================
+   CONTACT BOTTOM SECTION
+========================================================= */
+
+.contact-bottom-section {
+    margin-top: 50px;
+}
+
+
+/* =========================================================
+   CONTACT BOTTOM CARD
+========================================================= */
+
+.contact-bottom-card {
+    height: 100%;
+
+    padding: 30px 25px;
+
+    background: #ffffff;
+
+    border: 1px solid #dceeee;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    transition: all 0.3s ease;
+}
+
+
+.contact-bottom-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #159a96;
+
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   BOTTOM ICON
+========================================================= */
+
+.contact-bottom-icon {
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin: 0 auto 15px;
+
+    background: #e7f7f6;
+
+    color: #159a96;
+
+    border-radius: 50%;
+
+    font-size: 21px;
+}
+
+
+/* =========================================================
+   BOTTOM CARD TITLE
+========================================================= */
+
+.contact-bottom-card h4 {
+    color: #172554;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================================
+   BOTTOM CARD TEXT
+========================================================= */
+
+.contact-bottom-card p {
+    color: #64748b;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    margin: 0;
+}
+
+
+/* =========================================================
+   CONTACT TABLET
+========================================================= */
+
+@media (max-width: 991px) {
+
+    .donsvol-contact-page {
+        padding: 55px 0 70px;
+    }
+
+
+    .contact-page-header {
+        margin-bottom: 45px;
+    }
+
+
+    .contact-page-header h1 {
+        font-size: 38px;
+    }
+
+
+    .contact-info-card {
+        padding: 35px 30px;
+    }
+
+
+    .contact-form-card {
+        padding: 35px 30px;
+    }
+
+}
+
+
+/* =========================================================
+   CONTACT MOBILE
+========================================================= */
+
+@media (max-width: 767px) {
+
+    .donsvol-contact-page {
+        padding: 45px 0 60px;
+    }
+
+
+    .contact-page-header {
+        margin-bottom: 35px;
+    }
+
+
+    .contact-page-header h1 {
+        font-size: 30px;
+    }
+
+
+    .contact-page-header p {
+        font-size: 15px;
+    }
+
+
+    .contact-info-card {
+        padding: 30px 25px;
+    }
+
+
+    .contact-form-card {
+        padding: 30px 22px;
+    }
+
+
+    .contact-form-header {
+        align-items: flex-start;
+
+        gap: 13px;
+    }
+
+
+    .contact-form-header h2 {
+        font-size: 22px;
+    }
+
+
+    .contact-form-icon {
+        flex-basis: 48px;
+
+        width: 48px;
+
+        height: 48px;
+
+        font-size: 19px;
+    }
+
+
+    .contact-bottom-section {
+        margin-top: 35px;
+    }
+
+}
+
+
+/* =========================================================
+   CONTACT SMALL MOBILE
+========================================================= */
+
+@media (max-width: 575px) {
+
+    .contact-page-header h1 {
+        font-size: 27px;
+    }
+
+
+    .contact-info-header h2 {
+        font-size: 24px;
+    }
+
+
+    .contact-detail-item {
+        gap: 12px;
+    }
+
+
+    .contact-detail-icon {
+        flex-basis: 38px;
+
+        width: 38px;
+
+        height: 38px;
+    }
+
+}
+
+
+
+
+
+
